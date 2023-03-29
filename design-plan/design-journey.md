@@ -21,16 +21,16 @@ You can use bullet points and lists, or full paragraphs, or a combo, whichever i
 ### Catalog (Milestone 1)
 > What will your catalog website be about? (1 sentence)
 
-TODO: catalog topic
+Interactive dictionary for various Technologies in Software Development
 
 
 ### _Consumer_ Audience (Milestone 1)
 > Briefly explain your site's _consumer_ audience. Your audience should be specific, but not arbitrarily specific. (1 sentence)
 > Justify why this audience is a **cohesive** group. (1-2 sentences)
 
-TODO: site audience
+Beginner and prospective software engineers who wish to clarify concepts and further their learning about software development technologies
 
-TODO: why is this a _cohesive_ audience?
+This is a cohesive audience for a few reasons. One being that this audience is not too specific, it may include students, self-learning programmers, and junior/beginner programmers in industry. This audience is also not too broad because it is specific to a certain field of study and a certain occupation. This audience is cohesive because despite all these individuals potentially coming from various backgrounds, they all share the common goal of further expanding their software engineering knowledge and understanding confusing software engineering jargon.
 
 
 ### _Consumer_ Audience Goals (Milestone 1)
@@ -38,69 +38,85 @@ TODO: why is this a _cohesive_ audience?
 > List each goal below. There is no specific number of goals required for this, but you need enough to do the job (Hint: It's more than 1. But probably not more than 3.)
 > **Hint:** Users will be able to view all entries in the catalog and insert new entries into the catalog. The audience's goals should probably relate to these activities.
 
-Goal 1: TODO: brief title
+Goal 1: Clarify confusing terms/jargon to better engage in software engineering discussions
 
 - **Design Ideas and Choices** _How will you meet those goals in your design?_
-  - TODO: design ideas (1-2 sentences)
-- **Rationale & Additional Notes** _Justify your decisions; additional notes._
-  - TODO: rationale  (1-2 sentences)
+  - A user oriented toward this goal would prefer a quick experience where he queries quickly and is shown a term where he finds a quick blurb or explanation of an technology just so he can be acquainted with it (not exactly learn it). As such, I will implement a search across the media catalog, include sorting and tags. In the details pages, I will also include a quick blurb/summary and a quick coding example of what the technology is and how it's used
 
-Goal 2: TODO: brief title
+- **Rationale & Additional Notes** _Justify your decisions; additional notes._
+  - Since the user wishes for a fast experience, querying will allow him to reach exactly what he is looking for. In case, the name isn't recalled, the user can also sort and filter between items to find it. When the user accesses the details page of an item, they will be met with a quick definition/summary and example so that they are familiarized and can discuss the technology broadly
+
+Goal 2: Explore various areas of software development and learn something new
 
 - **Design Ideas and Choices** _How will you meet those goals in your design?_
-  - TODO: design ideas (1-2 sentences)
+  - I will meet this goal by creating tags of various semi-broad fields and categories in software development. These tags will be assigned to various pieces of media and can be filtered accordingly. I will also include in depth description about what the technology is on the details page, showcase coding examples, a sample coding question and answer or use cases and also link to further resources/the technology itself
+
 - **Rationale & Additional Notes** _Justify your decisions; additional notes._
-  - TODO: rationale (1-2 sentences)
+  - The creation of such tags will allow users to see various fields and decide which ones they want to focus on and explore. Now, the site is more personalized to what they want and the goal can be easily acheived. Since they wish to learn something new, the in-depth description will allow them to better understand, an example will help them visualize how to use a certain technology, and the question will help solidify their understanding. The link to further resources also helps if they wish to pursue further.
 
-Goal 3: TODO: brief title
+Goal 3: To stay-up-to-date and familiar with latest software development trends
 
-TODO: design ideas and rationale
-
-
-TODO: add as many goals as needed
+- **Design Ideas and Choices** _How will you meet those goals in your design?_
+  - To meet this goal, I will simply include a tag that describes a "hot" or "trending" technology. When clicked into, the user can see a quick definition, quick example, in-depth information, in-depth example, a question-answer and a link to a further resources. We would also include a "review" of the technology which will be sourced by industry individuals.
+- **Rationale & Additional Notes** _Justify your decisions; additional notes._
+  - The "hot" or "trending" technology tag will allow users to see a collection of these trending technologies. They can then view information on the technology and familiarize themselves with it as much as they desire. The review helps them understand members of the industry feel about this technology in terms of it's relevance
 
 
 ### _Consumer_ Audience Device (Milestone 1)
 > How will your _consumer_ audience access this website? From a narrow (phone) or wide (laptop) device?
 > Justify your decision. (1 sentence)
 
-TODO: audience device
+Laptop
 
-TODO: audience device justification
-
+The audience goals are to clarify and understand confusing terms, explore various fields of software engineering and learn something, and see hot technologies. In all, they wish to learn something new and though quickly, they want to sit down and really view it. The laptop is the best option for this because users may wish to spend some time to digest the material since software engineering technology can get quite complex. They also may wish to actually access the technology online while reading about it and most of these technologies require a laptop.
 
 ### _Consumer_ Persona (Milestone 1)
 > Use the goals you identified above to develop a persona of your site's _consumer_ audience.
 > Your persona must have a name and a face. The face can be a photo of a face or a drawing, etc.
 
-TODO: persona's face
 
-TODO: persona name
+!["Persona Image (consumer)](/design-plan/persona-cons.jpg)
+
+**Name:**
+
+Reginald
+
+- A computer science senior who is attempting to head into the software engineering industry
 
 **Factors that Influence Behavior:**
 
-TODO: summary of the persona's factors that influence their behavior (1-2 bullet points)
+- Reginald has basic, typical college computer science curriculum programming knowledge (is relatively new to industry required skills and knowledge)
+- Reginald is interviewing repeatedly (wants to ensure that he knows exactly what his interviewer is talking about when new skills are brought up)
+- Reginald is facing insecurity and imposter syndrome (due to being accustomed to college classes and coding assignments and not really having learned industry techniques and technologies)
+- Reginald is still in school (time constraints when learning, has to prioritize schoolwork and graduating)
 
 **Goals:**
 
-TODO: summary of persona's goals (1-2 bullet points)
+- Reginald wants to familiarize himself with various software engineering and hot industry technologies
+- He wants to further explore various fields of software engineering and really dedicate himself to a single field after graduation
+- Reginald wants to feel confident in discussions and better understand and communicate well with other software engineers, clients, and supervisors
 
 **Obstacles:**
 
-TODO: summary of persona's obstacles (1-2 bullet points)
+- Limited time available to learn due to school schedule
+- Feeling intimidated and overwhelmed by the vast amount of information and technologies on the internet
+- Only learned strong foundations of computer science in college (data structures, theory, algorithms, etc) but not necessarily how to apply it and use technologies in industry
 
 **Desires:**
 
-TODO: summary of persona's desires (1-2 bullet points)
+- Wants to feel competent and confident in his software engineering abilities and discussions
+- Wants to easily understand technical jargon with straightforward simple minimal descriptions without being overloaded with information
+- Be ready to adapt to industry trends and fit in when transitioning to industry standards and practicing
 
 
 ### _Administrator_ Audience (Milestone 1)
 > Briefly explain your site's _administrator_ audience. Your audience should be specific, but not arbitrarily specific. (1 sentence)
 > Justify why this audience is a **cohesive** group. (1-2 sentences)
 
-TODO: site audience
+An experienced, professional computer scientist or software developer
 
-TODO: why is this a _cohesive_ audience?
+This is a cohesive audience because it is not overly specific nor broad. It is describing, in moderate specificity, of individuals who are considered computer scientists or software developers who have considerable experience. This is not overly specific as it may include computer science professors, teachers, principal software engineers, and maybe PHD computer science candidates and researchers.
+
 
 
 ### _Administrator_ Audience Goals (Milestone 1)
@@ -108,52 +124,57 @@ TODO: why is this a _cohesive_ audience?
 > List each goal below. There is no specific number of goals required for this, but you need enough to do the job (Hint: It's more than 1. But probably not more than 3.)
 > **Hint:** Users will be able to view all entries in the catalog and insert new entries into the catalog. The audience's goals should probably relate to these activities.
 
-Goal 1: TODO: brief title
+Goal 1: Help provide quality content and resources to prospective junior developers and prospective students
+
+(The user will wish to provide information to individuals who may be candidates for a junior developer role or a student looking to learn)
+
+- **Design Ideas and Choices**
+- To allow for this, I plan to create a quick response form that allows the users to upload a media item and catalog and also update other catalogs. I will make this form include a quick definition, quick example, in-depth info and in-depth coding example and associated tags of a media piece.
+- **Rationale & Additional Notes** _Justify your decisions; additional notes._
+  - This allows for the user to pursue their goal of providing content and resources. Through a form, they'll be able to create a new media item or edit a previous one if it has faulty information. When complete, it'll be a polished media item describing a technology that they can showcase to prospective consumers.
+
+Goal 2: Provide opinions on various software development technologies and comment on if they think it is hot or not
 
 - **Design Ideas and Choices** _How will you meet those goals in your design?_
-  - TODO: design ideas (1-2 sentences)
+  - I will allow the user to write a review of a media item they're creating as well as write a review of other media items and also vote whether it is hot or not.
 - **Rationale & Additional Notes** _Justify your decisions; additional notes._
-  - TODO: rationale  (1-2 sentences)
-
-Goal 2: TODO: brief title
-
-- **Design Ideas and Choices** _How will you meet those goals in your design?_
-  - TODO: design ideas (1-2 sentences)
-- **Rationale & Additional Notes** _Justify your decisions; additional notes._
-  - TODO: rationale (1-2 sentences)
-
-Goal 3: TODO: brief title
-
-TODO: design ideas and rationale
-
-
-TODO: add as many goals as needed
+  - Allowing them to review technologies and also voting whether they're hot or not will allow them to share their opinions on specific technologies. After they share this, technologies they voted on may have a HOT tag or may have it removed and the average review may change.
 
 
 ### _Administrator_ Persona (Milestone 1)
 > Use the goals you identified above to develop a persona of your site's _administrator_ audience.
 > Your persona must have a name and a face. The face can be a photo of a face or a drawing, etc.
 
-TODO: persona's face
+!["Persona Image (admin)](/design-plan/persona-admin.jpg)
 
-TODO: persona name
+**Name:**
+Thomas
+
+A senior software engineer with 15 years of experience
 
 **Factors that Influence Behavior:**
 
-TODO: summary of the persona's factors that influence their behavior (1-2 bullet points)
+- Thomas has a busy work schedule (does not have luxury to spend considerable time outside of work)
+- Thomas is passionate about software engineering
+- Thomas needs help in his developer team
+- Thomas has a critical boss who is strict on deadlines and wants to understand the industry popularity of the technology he uses.
+- Had multiple jobs in various fields of software engineering
 
 **Goals:**
 
-TODO: summary of persona's goals (1-2 bullet points)
+- Help onboard potential software engineers by providing high quality content and resources to junior developers and prospective students
+- Share opinions on what technologies work best practically and are best for industry practices
 
 **Obstacles:**
 
-TODO: summary of persona's obstacles (1-2 bullet points)
+- Finding the time to create and curate content for the media catalog.
+- Staying up to date with latest trends and technology without falling into confirmation bias
 
 **Desires:**
 
-TODO: summary of persona's desires (1-2 bullet points)
-
+- To make a positive impact on the software development community
+- Help junior developers and prospective students learn and grow
+- Help others understand what is "hot" and trending in industy and also what is important and useful to developers
 
 ### Catalog Data (Milestone 1)
 > Using your personas, identify the data you need to include in the catalog for your site's audiences.
@@ -161,7 +182,33 @@ TODO: summary of persona's desires (1-2 bullet points)
 
 TODO: list the data your persona will need to effectively use the catalog
 
-TODO: Justify why this data aids the persona with their goals.
+Reginald will need the following
+
+- Technology name
+- Technology Image
+- Technology Definition
+- Technology example
+- Technology Description
+- Technology code
+- Technology resources
+- Technology reviews
+- Technology tags
+
+Thomas will need the following
+
+- Technology name
+- Technology Image
+- Technology Definition
+- Technology example
+- Technology Description
+- Technology code
+- Technology resources
+- Technology reviews
+- Technology tags
+- Technology mean_review
+- Technology hot_or_not
+
+This data aids the goals of both personas. For Reginald, seeing all this information allows him to be familiarized with software engineering technologies and will allow him to be confident in his discussions/communications. Moreover, the tags will allow him to see what is hot or not and further diversify himself among various fields. For Thomas, it allows him to provide information to help provide content and potential onboard young software engineers. Moreover, the mean_review will be showcased and will allow him to give his opinion on various technologies and vote whether they're hot or not
 
 
 
