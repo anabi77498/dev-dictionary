@@ -180,8 +180,6 @@ A senior software engineer with 15 years of experience
 > Using your personas, identify the data you need to include in the catalog for your site's audiences.
 > Justify why this data aligns with your persona's goals. (1 sentence)
 
-TODO: list the data your persona will need to effectively use the catalog
-
 Reginald will need the following
 
 - Technology name
@@ -211,7 +209,6 @@ Thomas will need the following
 This data aids the goals of both personas. For Reginald, seeing all this information allows him to be familiarized with software engineering technologies and will allow him to be confident in his discussions/communications. Moreover, the tags will allow him to see what is hot or not and further diversify himself among various fields. For Thomas, it allows him to provide information to help provide content and potential onboard young software engineers. Moreover, the mean_review will be showcased and will allow him to give his opinion on various technologies and vote whether they're hot or not
 
 
-
 ### Site Design (Milestone 1)
 > Design your catalog website to address the goals of your personas.
 > Sketch your site's design:
@@ -224,13 +221,27 @@ This data aids the goals of both personas. For Reginald, seeing all this informa
 > Provide a brief explanation _underneath_ each sketch. (1 sentence)
 > **Refer to your persona by name in each explanation.**
 
-TODO: sketch(es) + explanation
+![sketch 1 of catalog page](catalog-sketch1.jpg)
 
+The sketch above employs a thumbnail grid catalog page. Items of the media catalog are ordered as grid/tiled enteries and it allows the user to see mutliple views simultaneously and have space to internalize each item. The sort is included on the top right, the filters and search are on the left. The image/media largely dominates the users view. As Reginald views this, he will be more drawn to the images and will be able to query his values accordingly. This layout primes him to really explore various types of technologies and allows him to really diverisfy himself with what technologies belong in which tags/fields.
 
+![sketch 2 of catalog page](catalog-sketch2.jpg)
+
+The sketch above describes a list of tagged items to represent media items in the catalog page. The items are stacked vertically and can be clicked into. This allows the user to see multiple items in more so a list format. The image/media is showcased but is not as dominant as the above sketch. The filters, search, and sort are where they were described in sketch 1. As reginald views this, he will be able to find and search for the items he'd like faster. If he is exploring, he will be able to see various technology faster. Overall, Reginald will be able to do what he likes faster with this design
+
+![sketch 1 of details page](detail-sketch1.jpg)
+
+This sketch showcases a details page where the title is on the top and information is stacked sequentially below it. As Reginald views this, he will view the image then view the "quick ____" information first. The tags are below the image as secondary content because the Reginald already viewed these pieces of content. We also include the reviews here since it is more so a visual in Reginalds eyes as opposed to actual text content.
+
+![sketch 2 of details page](detail-sketch2.jpg)
+
+In this sketch, the quick ____ information is below the visuals. This is because Reginalds eyes will be drawn to the visual first and as a result, he will see the quick information first. As he goes, Reginald will see more detailed items and be able to digest the content as he so pleases.
+
+I plan to use sketch 1 of the catalog page and sketch 1 of the details page
 ### Catalog Design Patterns (Milestone 1)
 > Explain how you used design patterns in your site's design. (1-2 sentences)
 
-TODO: design pattern explanation
+In the sketches, I employed a left alignment for nearly all items, besides certain headings and images. The media catalog itself employes either a panel, tiled grid line or a vertical, stacked tagged list. I chose the panel tiled grid lines as my sites primary design. In this design, and as we can see, this item also has left aligned filters and searches and a commonly viewed sort button on the top right. We also have image indicators of sort and it will allow the user to sort accordingly.
 
 
 ## Implementation Plan (Milestone 1, Milestone 2, Milestone 3, Final Submission)
@@ -240,11 +251,42 @@ TODO: design pattern explanation
 > A bulleted list is probably the simplest way to do this.
 > Make sure you include constraints for each field.
 
-Table: TODO: table name
+Table: technologies
 
-- field1: TYPE {constraints...},
-- field2...
-- TODO: table fields + type + constraints
+- id: INT {U, AI, NN, PK},
+- name: INT {U, NN}
+- media: --------- ?
+- definition: TEXT {U, NN}
+- example: TEXT {}
+- description: TEXT {U, NN}
+- resource_id TEXT {} (foreign key (resources))
+- review_id INT {NN} (foreign key (reviews))
+- tag_id TEXT {NN} (foreign key (tags))
+
+
+Table: resources
+
+- id: INT {U, AI, NN, PK}
+- name: TEXT {NN}
+- topic: TEXT {NN}
+- url: TEXT {NN}
+
+Table: reviews
+
+- id: INT {U, AI, NN, PK}
+- item-reviewed: TEXT {U}
+- mean_rating: INT {NN}
+- reviews_count: INT {NN}
+
+Table: tags
+
+- id: INT {U, AI, NN, PK}
+- name: INT {U, NN}  (key-value pairing)
+- hot_count: INT {NN}
+- hot_vote_count: INT {NN}
+
+(if hot_count/vote_count > .8, it's hot)
+
 
 
 ### Database Query Plan (Milestone 1, Milestone 2, Milestone 3, Final Submission)
@@ -252,11 +294,15 @@ Table: TODO: table name
 > You may use natural language, pseudocode, or SQL.
 
 ```
-TODO: Plan a query
+INSERT * FROM technologies;
 ```
 
 ```
-TODO: Plan another query
+SELECT technologies.name, technologies.media, technologies.definition, technologies.example, technologies.description, reviews.mean_rating, resources.url, tags.hot_count, tags.vote_count, tags.name
+FROM technologies
+INNER JOIN resources ON technologies.resource_id = resources.id
+INNER JOIN reviews ON technologies.review_id = reviews.id
+INNER JOIN tags ON technologies.tag_id = tags.id;
 ```
 
 TODO: ...
