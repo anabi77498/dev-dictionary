@@ -274,16 +274,15 @@ Table: resources
 Table: reviews
 
 - id: INT {U, AI, NN, PK}
-- item-reviewed: TEXT {U}
 - mean_rating: INT {NN}
 - reviews_count: INT {NN}
+- hot_count: INT {NN}
+- hot_vote_count: INT {NN}
 
 Table: tags
 
 - id: INT {U, AI, NN, PK}
 - name: INT {U, NN}  (key-value pairing)
-- hot_count: INT {NN}
-- hot_vote_count: INT {NN}
 
 (if hot_count/vote_count > .8, it's hot)
 
@@ -298,7 +297,7 @@ INSERT * FROM technologies;
 ```
 
 ```
-SELECT technologies.name, technologies.media, technologies.definition, technologies.example, technologies.description, reviews.mean_rating, resources.url, tags.hot_count, tags.vote_count, tags.name
+SELECT technologies.name, technologies.media, technologies.definition, technologies.example, technologies.description, reviews.mean_rating, resources.url, reviews.hot_count, reviews.vote_count, tags.name
 FROM technologies
 INNER JOIN resources ON technologies.resource_id = resources.id
 INNER JOIN reviews ON technologies.review_id = reviews.id
