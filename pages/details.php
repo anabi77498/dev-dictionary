@@ -20,7 +20,7 @@
   <img src="/public/images/placeholder.jpg" alt="placeholder img" height=200 width=200>
 
   <h1>JavaScript</h1>
-  <p>Random facts about JavaScript, Random facts about JavaScript, Random facts about JavaScript, Random facts about JavaScript, Random facts about JavaScript, Random facts about JavaScript, Random facts about JavaScript, Random facts about JavaScript, Random facts about JavaScript</p>
+  <p>Random facts about JavaScript, Random facts about JavaScript, Random facts about JavaScript, Random facts about JavaScript, Random facts about JavaScript, Random facts about JavaScript, Random facts about JavaScript, Random facts about JavaScript, Random facts about JavaScript.</p>
 
 </body>
 
