@@ -251,7 +251,7 @@ In the sketches, I employed a left alignment for nearly all items, besides certa
 > A bulleted list is probably the simplest way to do this.
 > Make sure you include constraints for each field.
 
-Table: technologies
+Table: techs
 
 - id: INT {U, AI, NN, PK},
 - name: INT {U, NN}
@@ -259,34 +259,36 @@ Table: technologies
 - definition: TEXT {U, NN}
 - example: TEXT {}
 - description: TEXT {U, NN}
-- resource_id TEXT {} (foreign key (resources))
-- review_id INT {NN} (foreign key (reviews))
-- tag_id TEXT {NN} (foreign key (tags))
-
+- resource_id INT {U, NN FK -> resources.id}
+- review_id INT {U, NN FK -> reviews.id}
 
 Table: resources
 
 - id: INT {U, AI, NN, PK}
 - name: TEXT {NN}
-- topic: TEXT {NN}
+- subject: TEXT {NN}
 - url: TEXT {NN}
 
 Table: reviews
 
 - id: INT {U, AI, NN, PK}
-- mean_rating: INT {NN}
-- reviews_count: INT {NN}
+- rating_mean: INT {NN}
+- rating_count: INT {NN}
+- hot_yes_count: INT {NN}
 - hot_count: INT {NN}
-- hot_vote_count: INT {NN}
 
 Table: tags
 
 - id: INT {U, AI, NN, PK}
 - name: INT {U, NN}  (key-value pairing)
 
+Table: tech_tags
+
+- id: INT {U, AI, NN, PK}
+- tech_id INT {NN, FK -> tech.id}
+- tag_id INT {NN, FK -> tags.id}
+
 (if hot_count/vote_count > .8, it's hot)
-
-
 
 ### Database Query Plan (Milestone 1, Milestone 2, Milestone 3, Final Submission)
 > Plan _all_ of your database queries.
@@ -303,8 +305,6 @@ INNER JOIN resources ON technologies.resource_id = resources.id
 INNER JOIN reviews ON technologies.review_id = reviews.id
 INNER JOIN tags ON technologies.tag_id = tags.id;
 ```
-
-TODO: ...
 
 
 ## Complete & Polished Website (Final Submission)
