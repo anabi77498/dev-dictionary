@@ -57,9 +57,9 @@ Goal 2: Explore various areas of software development and learn something new
 Goal 3: To stay-up-to-date and familiar with latest software development trends
 
 - **Design Ideas and Choices** _How will you meet those goals in your design?_
-  - To meet this goal, I will simply include a tag that describes a "hot" or "trending" technology. When clicked into, the user can see a quick definition, quick example, in-depth information, in-depth example, a question-answer and a link to a further resources. We would also include a "review" of the technology which will be sourced by industry individuals.
+  - To meet this goal, I will simply include a marker that describes a "hot" or "trending" technology. When clicked into, the user can see a quick definition, quick example, in-depth information, in-depth example, a question-answer and a link to a further resources. We would also include a "review" of the technology which will be sourced by industry individuals.
 - **Rationale & Additional Notes** _Justify your decisions; additional notes._
-  - The "hot" or "trending" technology tag will allow users to see a collection of these trending technologies. They can then view information on the technology and familiarize themselves with it as much as they desire. The review helps them understand members of the industry feel about this technology in terms of it's relevance
+  - The "hot" or "trending" technology marker will allow users to see a collection of these trending technologies. They can then view information on the technology and familiarize themselves with it as much as they desire. The review helps them understand members of the industry feel about this technology in terms of it's relevance
 
 
 ### _Consumer_ Audience Device (Milestone 1)
@@ -138,8 +138,9 @@ Goal 2: Provide opinions on various software development technologies and commen
 - **Design Ideas and Choices** _How will you meet those goals in your design?_
   - I will allow the user to write a review of a media item they're creating as well as write a review of other media items and also vote whether it is hot or not.
 - **Rationale & Additional Notes** _Justify your decisions; additional notes._
-  - Allowing them to review technologies and also voting whether they're hot or not will allow them to share their opinions on specific technologies. After they share this, technologies they voted on may have a HOT tag or may have it removed and the average review may change.
+  - Allowing them to review technologies and also voting whether they're hot or not will allow them to share their opinions on specific technologies. After they share this, technologies they voted on may have a HOT marker or may have it removed and the average review may change.
 
+**NOTE:** The HOT marker marks a technology as HOT
 
 ### _Administrator_ Persona (Milestone 1)
 > Use the goals you identified above to develop a persona of your site's _administrator_ audience.
@@ -272,7 +273,7 @@ Table: resources
 Table: reviews
 
 - id: INT {U, AI, NN, PK}
-- rating_mean: INT {NN}
+- rating_mean: REAL {NN}
 - rating_count: INT {NN}
 - hot_yes_count: INT {NN}
 - hot_count: INT {NN}
@@ -280,7 +281,7 @@ Table: reviews
 Table: tags
 
 - id: INT {U, AI, NN, PK}
-- name: INT {U, NN}  (key-value pairing)
+- name: TEXT {U, NN}
 
 Table: tech_tags
 
@@ -289,6 +290,9 @@ Table: tech_tags
 - tag_id INT {NN, FK -> tags.id}
 
 (if hot_count/vote_count > .8, it's hot)
+
+**revisions**
+I revised the database to make fit the project requirements and enable proper joining. I also made the tag name text rather then int as previously planned and also made the rating_mean to be a REAL type to support decimals
 
 ### Database Query Plan (Milestone 1, Milestone 2, Milestone 3, Final Submission)
 > Plan _all_ of your database queries.
