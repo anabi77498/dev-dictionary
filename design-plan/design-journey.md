@@ -310,6 +310,26 @@ INNER JOIN reviews ON technologies.review_id = reviews.id
 INNER JOIN tags ON technologies.tag_id = tags.id;
 ```
 
+```
+SELECT techs.name AS 'tech.name',
+    techs.definition AS 'tech.definition',
+    techs.example AS 'tech.example',
+    techs.description AS 'tech.description',
+    resources.name AS 'resource.name',
+    resources.url AS 'resource.url',
+    reviews.rating_mean AS 'review.rating_mean',
+    reviews.rating_count AS 'review.rating_count',
+    reviews.hot_yes_count AS 'review.hot_yes_count',
+    reviews.hot_count AS 'review.hot_count',
+    tags.name AS 'tag.name'
+    FROM techs
+    INNER JOIN resources ON techs.resource_id = resources.id
+    INNER JOIN reviews ON techs.review_id = reviews.id
+    INNER JOIN tech_tags ON techs.id = tech_tags.tech_id
+    INNER JOIN tags ON tech_tags.tag_id = tags.id
+    WHERE techs.id = :techsId;
+```
+
 
 ## Complete & Polished Website (Final Submission)
 
