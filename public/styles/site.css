@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.img-btn {
+  background: none;
+  border: none
+}
+
+.img-btn:hover {
+  opacity: .3;
+}

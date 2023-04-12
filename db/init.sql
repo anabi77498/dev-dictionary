@@ -7,7 +7,7 @@ CREATE TABLE resources (
   PRIMARY KEY(id AUTOINCREMENT)
 );
 
---- Reviews (real) ---
+--- Reviews ---
 CREATE TABLE reviews (
   id INTEGER NOT NULL UNIQUE,
   rating_mean INTEGER NOT NULL,
@@ -147,4 +147,8 @@ VALUES
 INSERT INTO
   tech_tags (tech_id, tag_id)
 VALUES
-  (2, 5);
+  (2, 2);
+
+-- TODO:
+-- - Make Tags alphabetical
+-- - Input all tags and ensure ID order

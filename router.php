@@ -2,7 +2,8 @@
 include_once('includes/db.php');
 
 const ROUTES = array(
-  '/' => 'pages/details.php'
+  '/' => 'pages/home.php',
+  '/details' => 'pages/details.php'
 );
 
 function match_static($uri)
