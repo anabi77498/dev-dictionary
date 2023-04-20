@@ -1,5 +1,20 @@
 # Project 3: Design Journey
 
+TODO: Develop insert form for
+      1) information (techs)
+      2) medias
+TODO: Showcase 80% as "Hot"
+
+TODO: develop sorting
+
+TODO: develop voting & updates on hot score, reviews
+
+TODO: Add more seed data
+
+TODO: Store citations, user.id admin in technology
+    1) Display citations
+    2) Develop "edit mode" on the things made
+
 **For each milestone, complete only the sections that are labeled with that milestone.** Refine all sections before the final submission.
 
 You are graded on your design process. If you later need to update your plan, **do not delete the original plan, rather leave it in place and append your new plan _below_ the original.** Then explain why you are changing your plan. Any time you update your plan, you're documenting your design process!

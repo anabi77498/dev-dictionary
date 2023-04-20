@@ -44,6 +44,15 @@ CREATE TABLE tech_tags (
   PRIMARY KEY(id AUTOINCREMENT) FOREIGN KEY (tech_id) REFERENCES techs(id) FOREIGN KEY (tag_id) REFERENCES tags(id)
 );
 
+-- Media entries --
+CREATE TABLE media (
+  id INTEGER NOT NULL UNIQUE,
+  tech_id INTEGER NOT NULL UNIQUE,
+  file_ext TEXT NOT NULL,
+  source TEXT,
+  PRIMARY KEY(id AUTOINCREMENT) FOREIGN KEY (tech_id) REFERENCES techs(id)
+);
+
 -- Resources Seed Data --
 INSERT INTO
   resources (name, subject, url)
@@ -139,7 +148,11 @@ VALUES
   (
     'OCaml',
     'A high-level programming language that emphasizes strong static typing, type inference, and pattern matching',
-    'let x = 4 :: 2 :: 3 :: []',
+    'let x = 4 :: 2 :: 3 :: [] in
+    match x with
+    | [] -> [891]
+    | h :: t -> t
+    | _ -> faiwith "Not a List!!"',
     'OCaml is a functional programming language that is used for a variety of applications, including scientific computing, symbolic computation, and systems programming. It is designed to be expressive, concise, and safe, with a strong type system that helps catch errors at compile time. OCaml also features type inference, garbage collection, and support for imperative programming, making it a versatile language that can handle a wide range of programming paradigms. One of the key features of OCaml is its use of pattern matching, which allows developers to write concise and expressive code for data manipulation and processing. OCaml is often used in the development of compilers, interpreters, and other tools for programming languages, due to its strong typing, efficient memory management, and support for abstract data types. Additionally, OCaml is commonly used in the development of web applications, database systems, and financial software. Its popularity has also been driven by the fact that it is an open-source language with an active community of developers who contribute libraries, tools, and frameworks. Overall, OCaml is a powerful and flexible programming language that can be used in a variety of contexts and applications.',
     1,
     1
@@ -160,8 +173,8 @@ VALUES
     'JUnit is a unit testing framework for Java that provides a simple way to write and run repeatable automated tests to ensure the code behaves as expected.',
     '@Test
       public void testAdd() {
-        Calculator calculator = new Calculator(); ||
-        int result = calculator.add(2, 3); ||
+        Calculator calculator = new Calculator();
+        int result = calculator.add(2, 3);
         assertEquals(5, result);
     }',
     'JUnit is an open-source testing framework for the Java programming language, designed to help developers write and run repeatable tests. It provides a set of annotations and assertion methods that allow developers to test their code in a structured and organized manner. Developers can use JUnit to create a suite of tests to ensure their code works as expected, and to identify and fix issues quickly. JUnit allows developers to automate their testing process, which is particularly useful when dealing with large codebases or when making changes to existing code. JUnit tests are written in Java and can be integrated with most popular development environments, such as Eclipse or IntelliJ IDEA. Developers can write tests for individual units of code (unit testing), or for entire applications (integration testing). Test results are displayed in a user-friendly format, indicating which tests passed and which failed. JUnit is widely used in the industry and is considered a standard for unit testing in Java. Its popularity is due to its simplicity, ease of use, and integration with popular development environments. JUnit has become a crucial tool for ensuring software quality and minimizing the risk of bugs and errors in Java applications.',
@@ -184,6 +197,23 @@ INSERT INTO
 VALUES
   (2, 8);
 
--- TODO:
--- - Make Tags alphabetical
--- - Input all tags and ensure ID order
+-- Media entries --
+INSERT INTO
+  media (id, tech_id, file_ext, source)
+VALUES
+  (
+    1,
+    1,
+    "png",
+    "https://icon-icons.com/icon/file-type-ocaml/130288"
+  );
+
+INSERT INTO
+  media (id, tech_id, file_ext, source)
+VALUES
+  (
+    2,
+    2,
+    "png",
+    "https://www.opsera.io/platform/unified-insights"
+  );

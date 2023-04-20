@@ -29,10 +29,13 @@ if ($get_id != NULL) {
     reviews.rating_count AS 'review.rating_count',
     reviews.hot_yes_count AS 'review.hot_yes_count',
     reviews.hot_count AS 'review.hot_count',
+    media.tech_id AS 'media.tech_id',
+    media.file_ext AS 'media.file_ext',
     tags.name AS 'tag.name'
     FROM techs
     INNER JOIN resources ON techs.resource_id = resources.id
     INNER JOIN reviews ON techs.review_id = reviews.id
+    INNER JOIN media ON techs.id = media.tech_id
     INNER JOIN tech_tags ON techs.id = tech_tags.tech_id
     INNER JOIN tags ON tech_tags.tag_id = tags.id
     WHERE techs.id = :techsId;
@@ -48,21 +51,11 @@ if ($get_id != NULL) {
     $record = $records[0];
   };
 
-  // <!-- "SELECT techs.name AS 'tech.name',
-  // techs.definition AS 'tech.definition',
-  // techs.example AS 'tech.example',
-  // techs.description AS 'tech.description',
-  // resources.name AS 'resource.name',
-  // resources.url AS 'resource.url',
-  // reviews.rating_mean AS 'review.rating_mean',
-  // reviews.rating_count AS 'review.rating_count',
-  // reviews.hot_yes_count AS 'review.hot_yes_count',
-  // reviews.hot_count AS 'review.hot_yes_count',
-  // tags.name AS 'tag.name' -->
-
   $mean_hot_count = round(((int) $record['review.hot_yes_count']) / ((int) $record['review.hot_count']) * 100);
   $reviews_pct_hot_count =
     (string) $mean_hot_count . "%";
+
+  $media_url = '/public/uploads/entries/' . $record["media.tech_id"] . '.' . $record["media.file_ext"];
 };
 
 ?>
@@ -83,13 +76,7 @@ if ($get_id != NULL) {
 
 <body>
 
-  <header class="navbar navbar-light bg-nav">
-    <a href="/">
-      <img class="d-inline-block align-top logo" src="/public/images/placeholder.jpg" alt="placeholder img" height=50 width=50>
-    </a>
-    <h1 class="title">The Developer Dictionary</h1>
-    <button class="login">login</button>
-  </header>
+  <?php include 'includes/header.php'; ?>
 
   <main>
     <cite class="logo-cite">Item was sourced at <a href="https://www.slntechnologies.com/home/image-placeholder/">slntechnologies</a></cite>
@@ -99,31 +86,36 @@ if ($get_id != NULL) {
     <div class="record-display">
       <div class="record-info1">
 
-        <img src="/public/images/placeholder.jpg" alt="placeholder img" height=250 width=250>
+        <img src="<?php echo $media_url ?>" alt="<?php echo $record['tag.name'] ?> image" height=250 width=250>
 
         <div class="record-ratings-tags">
-          <h3>Tags</h3>
-          <?php foreach ($records as $rec) { ?>
-            <p><?php echo $rec['tag.name'] ?></p>
-          <?php } ?>
 
-          <h3>Ratings</h3>
+          <p class="badge badge-pill badge-info bg-tag-color tag-mg">
+            <?php echo $record['tag.name'] ?>
+          </p>
 
-          <p><?php echo RATING[round($record['review.rating_mean'])] ?> (<?php echo $record['review.rating_mean'] ?> / 5.0)</p>
+          <p class="rating">
+            <span class="rating-logo">
+              <?php echo RATING[round($record['review.rating_mean'])] ?>
+            </span>
+            <?php echo $record['review.rating_mean'] ?> / 5.0
+          </p>
 
-          <p class="rating-p">The rating for <?php echo $record['tech.name'] ?> is based on it's usability, scalability, and overall effectiveness in the development process</p>
+          <p class="blockquote-footer rating-p">The rating for <?php echo $record['tech.name'] ?> is based on it's usability, scalability, and overall effectiveness in the development process</p>
 
-          <p><span class="hot-logo">&#9832</span> <?php echo $reviews_pct_hot_count ?></p>
+          <p class="hot-score"><span class="hot-logo">&#9832</span> <?php echo $reviews_pct_hot_count ?></p>
 
-          <p class="hot-p"><?php echo $reviews_pct_hot_count ?> of industry developers and professionals consider this to be a hot and trending technology</p>
+          <p class="hot-p blockquote-footer"><?php echo $reviews_pct_hot_count ?> of industry developers and professionals consider this to be a hot and trending technology</p>
         </div>
       </div>
 
       <div class="record-info2">
-        <h2><?php echo $record['tech.definition'] ?></h2>
+        <h3 class="alert alert-primary def-color"><?php echo $record['tech.definition'] ?></h3>
 
         <h3>Example</h3>
-        <p><?php echo $record['tech.example'] ?></p>
+        <div class="bg-code rounded">
+          <pre><code><?php echo $record['tech.example'] ?></pre></code>
+        </div>
 
         <h3>Description</h3>
         <p><?php echo $record['tech.description'] ?></p>
@@ -154,6 +146,8 @@ if ($get_id != NULL) {
     </form>
 
   </main>
+
+  <?php include 'includes/footer.php'; ?>
 </body>
 
 </html>

@@ -15,7 +15,7 @@
 
 main {
   padding-left: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 }
 
 .logo,
@@ -40,32 +40,69 @@ p {
   font-size: 18px;
 }
 
-.bg-nav {
+.bg-nav-ft {
   background-color: #96d1fb;
 }
 
 main {
   background-color: #e3f2fd;
+  min-height: 620px;
 }
 
 .title {
   font-size: 48px;
 }
 
+.ft-mg {
+  padding: 10px
+}
+
+.no-tags-alert {
+  display: flex;
+  justify-content: center;
+}
+
+.filter-list {
+  list-style-type: none
+}
+
+.filter-list-ul {
+  margin-top: -20px;
+}
+
+.filter-submit-btn {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 50px;
+  margin-top: 10px;
+}
 
 
+.filter-form {
+  max-width: 250px;
+}
 
+.catalog-sect {
+  display: flex;
+  flex-direction: row;
+}
 
+.catalog-body {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+}
 
-
-
-
+.catalog-queries {
+  display: flex;
+}
 
 
 /******** CSS STYLING FOR DETAILS PAGE *********/
 
 .record-name {
-  font-size: 42px;
+  font-size: 48px;
+  margin-bottom: 20px;
 }
 
 .record-display {
@@ -79,21 +116,64 @@ main {
 .record-info1 {
   display: flex;
   flex-direction: column;
+  min-width: 300px;
+}
+
+.record-info2 {
+  margin-right: 10px;
 }
 
 .hot-logo {
   color: red;
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 700;
 }
 
 .rating-p,
 .hot-p {
-  font-size: 12px;
+  font-size: 8px;
 }
 
 .record-ratings-tags {
   margin-top: 5px;
 }
+
+.bg-tag-color {
+  background-color: rgb(214, 168, 0);
+  ;
+}
+
+.tag-mg {
+  margin-top: 15px;
+}
+
+.rating-logo,
+.hot-logo {
+  font-size: 24px;
+}
+
+.rating,
+.hot-score {
+  font-size: 20px;
+}
+
+.bg-code {
+  color: #265077;
+  background-color: rgb(236, 247, 255);
+  padding: 10px;
+  margin: 10px;
+  margin-right: 15px;
+}
+
+.exit-filter {
+  background: none;
+  border: none;
+  text-decoration: none;
+}
+
+.exit-filter:hover {
+  opacity: .3;
+}
+
 
 /***********************************************/
