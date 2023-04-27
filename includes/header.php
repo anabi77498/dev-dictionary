@@ -3,5 +3,11 @@
     <img class="d-inline-block align-top logo" src="/public/images/logo.png" alt="website logo" height=75 width=75>
   </a>
   <h1 class="title">The Developer Dictionary</h1>
-  <button class="login">Sign In</button>
+  <?php if ($activeLogin) { ?>
+    <a href="/" class="login_home">Home</a>
+  <?php } else if (!is_user_logged_in()) { ?>
+    <a href="/login" class="login">Sign In</a>
+  <?php } else if (is_user_logged_in()) { ?>
+    <a class="logout" href="<?php echo logout_url(); ?>">Sign Out</a>
+  <?php } ?>
 </header>

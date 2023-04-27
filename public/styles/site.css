@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 30px
 }
 
 .img-btn {
@@ -9,6 +11,7 @@
   border: none
 }
 
+.insert-entry:hover,
 .img-btn:hover {
   opacity: .3;
 }
@@ -29,6 +32,15 @@ main {
 
 .login {
   margin-right: 10px;
+}
+
+.login_home {
+  margin-right: 15.3px;
+}
+
+.logout {
+  margin-right: 8px;
+  margin-left: -10px;
 }
 
 .logo-cite {
@@ -87,15 +99,71 @@ main {
   flex-direction: row;
 }
 
-.catalog-body {
-  display: flex;
-  flex-grow: 1;
-  justify-content: center;
-}
-
 .catalog-queries {
   display: flex;
 }
+
+.catalog-sect {
+  margin-top: 20px;
+  margin-bottom: 20px
+}
+
+.catalog-body {
+  background-color: #cae7fb;
+  padding: 30px;
+  min-height: 500px;
+}
+
+.catalog-queries {
+  padding-top: 30px;
+}
+
+.catalog-sort-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-wrap: wrap;
+}
+
+.media-entry {
+  max-width: 450px;
+  max-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px
+}
+
+.tag-display {
+  margin-top: -10px;
+  align-self: center;
+}
+
+.new-entry {
+  width: 275px;
+  height: 300px;
+  border: dashed 2px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.new-entry p {
+  margin: 0;
+  margin-top: -60px;
+}
+
+.new-entry img {
+  margin-top: -40px;
+}
+
+.new-entry cite {
+  margin-top: 50px;
+  font-size: 10px;
+}
+
 
 
 /******** CSS STYLING FOR DETAILS PAGE *********/

@@ -1,9 +1,18 @@
 <?php
 include_once('includes/db.php');
 
+$db = init_sqlite_db('db/site.sqlite', 'db/init.sql');
+
+// check login/logout params
+include_once("includes/sessions.php");
+$session_messages = array();
+process_session_params($db, $session_messages);
+
 const ROUTES = array(
   '/' => 'pages/home.php',
-  '/details' => 'pages/details.php'
+  '/details' => 'pages/details.php',
+  '/login' => 'pages/login.php',
+  '/entry-insert' => 'pages/entry-insert.php'
 );
 
 function match_static($uri)

@@ -14,6 +14,8 @@ TODO: Add more seed data
 TODO: Store citations, user.id admin in technology
     1) Display citations
     2) Develop "edit mode" on the things made
+    3) CITE LOGO
+    4) CITE EVERYTHING
 
 **For each milestone, complete only the sections that are labeled with that milestone.** Refine all sections before the final submission.
 
