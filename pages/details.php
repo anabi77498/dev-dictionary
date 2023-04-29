@@ -25,7 +25,7 @@ if ($get_id != NULL) {
     techs.example AS 'tech.example',
     techs.description AS 'tech.description',
     techs.resource_name AS 'tech.resource_name',
-    techs.resource_name AS 'tech.resource_url',
+    techs.resource_url AS 'tech.resource_url',
     reviews.rating_mean AS 'review.rating_mean',
     reviews.rating_count AS 'review.rating_count',
     reviews.hot_yes_count AS 'review.hot_yes_count',
@@ -99,7 +99,7 @@ if ($record['review.hot_count'] == 1) {
     <div class="record-name-group">
       <h1 class="record-name"><?php echo $record['tech.name'] ?></h1>
       <?php if (is_user_logged_in()) { ?>
-        <form nethod="get" action="/details/edit">
+        <form method="get" action="/details/edit">
 
           <!-- hidden input for what is being edited -->
           <input type="hidden" name="to_edit" value="techs.name">
@@ -111,8 +111,6 @@ if ($record['review.hot_count'] == 1) {
             <i style="font-size:22px" class="fa">&#xf044;</i>
           </button>
         </form>
-
-
       <?php } ?>
     </div>
 
@@ -162,7 +160,16 @@ if ($record['review.hot_count'] == 1) {
             <?php echo $record['tech.definition'] ?>
           </h3>
           <?php if (is_user_logged_in()) { ?>
-            <button class="edit-btn definition-edit"><i style="font-size:22px" class="fa">&#xf044;</i></button>
+            <form method="get" action="/details/edit">
+
+              <!-- hidden input for what is being edited -->
+              <input type="hidden" name="to_edit" value="techs.definition">
+
+              <!-- hidden input for record -->
+              <input type="hidden" name="record" value="<?php echo htmlspecialchars($record['tech.id']) ?>">
+
+              <button class="edit-btn definition-edit"><i style="font-size:22px" class="fa">&#xf044;</i></button>
+            </form>
           <?php } ?>
         </div>
 
@@ -170,7 +177,17 @@ if ($record['review.hot_count'] == 1) {
         <div class="h3-edit-group">
           <h3>Example</h3>
           <?php if (is_user_logged_in()) { ?>
-            <button class="edit-btn definition-edit"><i style="font-size:22px" class="fa">&#xf044;</i></button>
+            <form method="get" action="/details/edit">
+
+              <!-- hidden input for what is being edited -->
+              <input type="hidden" name="to_edit" value="techs.example">
+
+              <!-- hidden input for record -->
+              <input type="hidden" name="record" value="<?php echo htmlspecialchars($record['tech.id']) ?>">
+
+              <button class="edit-btn definition-edit"><i style="font-size:22px" class="fa">&#xf044;</i></button>
+
+            </form>
           <?php } ?>
         </div>
         <div class="bg-code rounded">
@@ -179,8 +196,19 @@ if ($record['review.hot_count'] == 1) {
 
         <div class="h3-edit-group">
           <h3>Description</h3>
+
           <?php if (is_user_logged_in()) { ?>
-            <button class="edit-btn definition-edit"><i style="font-size:22px" class="fa">&#xf044;</i></button>
+
+            <form method="get" action="/details/edit">
+
+              <!-- hidden input for what is being edited -->
+              <input type="hidden" name="to_edit" value="techs.description">
+
+              <!-- hidden input for record -->
+              <input type="hidden" name="record" value="<?php echo htmlspecialchars($record['tech.id']) ?>">
+
+              <button class="edit-btn definition-edit"><i style="font-size:22px" class="fa">&#xf044;</i></button>
+            </form>
           <?php } ?>
         </div>
         <p><?php echo $record['tech.description'] ?></p>
@@ -188,7 +216,20 @@ if ($record['review.hot_count'] == 1) {
         <div class="h3-edit-group">
           <h3>Resources</h3>
           <?php if (is_user_logged_in()) { ?>
-            <button class="edit-btn definition-edit"><i style="font-size:22px" class="fa">&#xf044;</i></button>
+
+            <form method="get" action="/details/edit">
+
+              <!-- hidden input for what is being edited -->
+              <input type="hidden" name="to_edit" value="techs.resource_name">
+
+              <!-- hidden input for what is being edited -->
+              <input type="hidden" name="to_edit2" value="techs.resource_url">
+
+              <!-- hidden input for record -->
+              <input type="hidden" name="record" value="<?php echo htmlspecialchars($record['tech.id']) ?>">
+
+              <button class="edit-btn definition-edit"><i style="font-size:22px" class="fa">&#xf044;</i></button>
+            </form>
           <?php } ?>
         </div>
         <p><a href="<?php echo $record['tech.resource_url'] ?>"><?php echo $record['tech.resource_name'] ?></a></p>

@@ -260,6 +260,9 @@ main {
   opacity: .3;
 }
 
+/***********************************************/
+
+/******************details/edit********************/
 
 .edit-btn {
   background-color: rgb(255, 255, 255);
@@ -287,8 +290,14 @@ main {
   gap: 5px
 }
 
+.textarea-input-edit {
+  display: flex;
+  flex-direction: column;
+}
 
-
+.textarea-input-edit textarea {
+  align-self: flex-start;
+}
 
 /***********************************************/
 
