@@ -17,6 +17,14 @@ TODO: Store citations, user.id admin in technology
     3) CITE LOGO
     4) CITE EVERYTHING
 
+TODO: only show hot if count > 5
+
+TODO: constraints on writing (min 300 words for description etc)
+
+TODO: display all tags on details page
+
+TODO: fix login
+
 **For each milestone, complete only the sections that are labeled with that milestone.** Refine all sections before the final submission.
 
 You are graded on your design process. If you later need to update your plan, **do not delete the original plan, rather leave it in place and append your new plan _below_ the original.** Then explain why you are changing your plan. Any time you update your plan, you're documenting your design process!

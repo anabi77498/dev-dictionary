@@ -5,6 +5,7 @@ $db = init_sqlite_db('db/site.sqlite', 'db/init.sql');
 
 //checking filters
 $is_filtered = FALSE;
+$filter_select = "";
 
 //if filtered by tag display else don't
 if (isset($_GET['filter-tag'])) {
@@ -76,7 +77,6 @@ foreach ($tags as $tag) {
   <?php include 'includes/header.php'; ?>
 
   <main>
-    <cite class="logo-cite">Item was sourced at <a href="https://www.slntechnologies.com/home/image-placeholder/">slntechnologies</a></cite>
 
     <?php if (is_user_logged_in()) { ?>
       <p>Welcome <strong><?php echo htmlspecialchars($current_user['name']); ?></strong>! You are currently logged in and able to access moderation features.</p>
@@ -152,21 +152,29 @@ foreach ($tags as $tag) {
                     <h4><?php echo htmlspecialchars($record["tech.name"]) ?> </h4>
 
                     <div class="tag-display">
-                      <?php foreach ($tag_records as $tag_record) { ?>
-                        <div class="badge badge-pill badge-info bg-tag-color tag-mg ">
-                          <?php echo htmlspecialchars($tag_record["tag.name"]) ?>
+                      <?php if (count($tag_records) < 4) { ?>
+                        <?php foreach ($tag_records as $tag_record) { ?>
+                          <div class="badge badge-pill badge-info bg-tag-color tag-mg tag-mg-home ">
+                            <?php echo htmlspecialchars($tag_record["tag.name"]) ?>
+                          </div>
+                        <?php } ?>
+                      <?php } else { ?>
+                        <div class="badge badge-pill badge-info bg-tag-color-2 tag-mg tag-mg-home ">
+                          <?php echo count($tag_records) ?> tags
                         </div>
                       <?php } ?>
                     </div>
                   </div>
                 <?php } ?>
-                <div class="new-entry">
-                  <a href="/entry-insert">
-                    <img src="/public/images/edit.png" class="insert-entry" alt="add image for media entry" height=300 width=300 />
-                  </a>
-                  <p>Add a new entry</p>
-                  <cite>Image taken from <a href="https://thenounproject.com/icon/add-image-396915/">The noun project</a></cite>
-                </div>
+                <?php if (is_user_logged_in()) { ?>
+                  <div class="new-entry">
+                    <a href="/entry-insert">
+                      <img src="/public/images/edit.png" class="insert-entry" alt="add image for media entry" height=300 width=300 />
+                    </a>
+                    <p>Add a new entry</p>
+                    <cite>Image taken from <a href="https://thenounproject.com/icon/add-image-396915/">The noun project</a></cite>
+                  </div>
+                <?php } ?>
               </div>
             <?php } else if ($is_filtered) { ?>
               <div class="no-tags-alert">

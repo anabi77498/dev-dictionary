@@ -4,10 +4,10 @@
   </a>
   <h1 class="title">The Developer Dictionary</h1>
   <?php if ($activeLogin) { ?>
-    <a href="/" class="login_home">Home</a>
+    <a href="/" class="login_home"><button>Home</button></a>
   <?php } else if (!is_user_logged_in()) { ?>
-    <a href="/login" class="login">Sign In</a>
+    <a href="/login" class="login"><button>Sign In</button></a>
   <?php } else if (is_user_logged_in()) { ?>
-    <a class="logout" href="<?php echo logout_url(); ?>">Sign Out</a>
+    <a class="logout" href="<?php echo logout_url(); ?>"><button>Sign Out</button></a>
   <?php } ?>
 </header>

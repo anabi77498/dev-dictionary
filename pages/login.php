@@ -19,11 +19,16 @@
   <?php include 'includes/header.php'; ?>
 
   <main>
-    <cite class="logo-cite">Item was sourced at <a href="https://www.slntechnologies.com/home/image-placeholder/">slntechnologies</a></cite>
 
     <?php if (!is_user_logged_in()) { ?>
       <h1>Sign In</h1>
-      <?php echo login_form('/', $session_messages); ?>
+      <?php echo login_form('/login', $session_messages); ?>
+    <?php } ?>
+    <?php if (is_user_logged_in()) { ?>
+      <div class="alert alert-success" role="alert">
+        <p class="success-login-msg"><strong>Success!</strong> You are currently logged in</p>
+      </div>
+      <p>Please navigate back to the <strong><a href="/" class="login_home">Home Page</a></strong></p>
     <?php } ?>
   </main>
   <?php include 'includes/footer.php'; ?>

@@ -17,6 +17,7 @@
 }
 
 main {
+  padding-top: 20px;
   padding-left: 10px;
   padding-bottom: 20px;
 }
@@ -85,7 +86,6 @@ main {
 .filter-submit-btn {
   display: flex;
   justify-content: flex-end;
-  margin-right: 50px;
   margin-top: 10px;
 }
 
@@ -97,11 +97,9 @@ main {
 .catalog-sect {
   display: flex;
   flex-direction: row;
+  gap: 10px;
 }
 
-.catalog-queries {
-  display: flex;
-}
 
 .catalog-sect {
   margin-top: 20px;
@@ -126,18 +124,29 @@ main {
 }
 
 .media-entry {
-  max-width: 450px;
+  max-width: 300px;
   max-height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 5px
+  gap: 5px;
 }
 
 .tag-display {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
   margin-top: -10px;
   align-self: center;
+  justify-self: center;
+}
+
+.tag-mg-home {
+  margin-bottom: -10px;
 }
 
 .new-entry {
@@ -177,14 +186,16 @@ main {
   margin-top: 20px;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   gap: 40px
 }
 
 .record-info1 {
   display: flex;
   flex-direction: column;
-  min-width: 300px;
+  width: 350px;
+  min-width: 350px;
+  padding-right: 50px;
 }
 
 .record-info2 {
@@ -204,11 +215,17 @@ main {
 
 .record-ratings-tags {
   margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px
 }
 
 .bg-tag-color {
   background-color: rgb(214, 168, 0);
-  ;
+}
+
+.bg-tag-color-2 {
+  background-color: rgb(218, 134, 39);
 }
 
 .tag-mg {
@@ -243,5 +260,69 @@ main {
   opacity: .3;
 }
 
+
+.edit-btn {
+  background-color: rgb(255, 255, 255);
+  border-radius: 20%;
+  padding-bottom: 0;
+  align-self: center;
+  margin-bottom: 20px;
+}
+
+.record-name-group {
+  display: flex;
+  flex-grow: 0;
+  padding: 0;
+  gap: 5px;
+  margin-bottom: -10px;
+  align-items: center;
+}
+
+.def-blurb {
+  display: flex;
+}
+
+.h3-edit-group {
+  display: flex;
+  gap: 5px
+}
+
+
+
+
+/***********************************************/
+
+/**************Insert Forms*********************/
+
+.text-area {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-area textarea {
+  align-self: flex-start;
+}
+
+.non-login-msg {
+  font-size: 18px;
+}
+
+div .non-login-msg {
+  font-size: 22px;
+  margin: 0
+}
+
+/***********************************************/
+
+/**************Login Page*********************/
+
+.success-login-msg strong {
+  color: rgb(1, 104, 1);
+}
+
+.success-login-msg {
+  font-size: 24px;
+  margin: 0
+}
 
 /***********************************************/

@@ -12,7 +12,8 @@ const ROUTES = array(
   '/' => 'pages/home.php',
   '/details' => 'pages/details.php',
   '/login' => 'pages/login.php',
-  '/entry-insert' => 'pages/entry-insert.php'
+  '/entry-insert' => 'pages/entry-insert.php',
+  '/details/edit' => 'pages/details-edit.php'
 );
 
 function match_static($uri)
