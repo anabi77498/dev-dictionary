@@ -1,3 +1,7 @@
+html {
+  background-color: #96d1fb;
+}
+
 .container {
   display: flex;
   flex-direction: row;
@@ -59,7 +63,7 @@ p {
 
 main {
   background-color: #e3f2fd;
-  min-height: 620px;
+  min-height: 220px;
 }
 
 .title {
@@ -147,6 +151,7 @@ main {
 
 .tag-mg-home {
   margin-bottom: -10px;
+  align-self: flex-start;
 }
 
 .new-entry {
@@ -260,6 +265,28 @@ main {
   opacity: .3;
 }
 
+.tags-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.tag-form {
+  margin-top: 10px;
+}
+
+.details-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.details-top button {
+  align-self: center;
+}
+
 /***********************************************/
 
 /******************details/edit********************/
@@ -299,6 +326,51 @@ main {
   align-self: flex-start;
 }
 
+.tag-edits p {
+  font-size: 18px;
+  margin: 0;
+  align-self: center;
+}
+
+.tag-x-group {
+  display: flex;
+  align-items: center;
+}
+
+.tag-x {
+  padding-top: 15px;
+  margin-right: 20px;
+  background: none;
+  border: none
+}
+
+.tags-group-edit {
+  display: flex;
+  flex-direction: column;
+  max-height: 100px;
+  flex-wrap: wrap;
+}
+
+.tag-x:hover {
+  opacity: .3;
+}
+
+.add-tag-title {
+  margin-bottom: 10px;
+}
+
+
+.tag-edit-body {
+  display: flex;
+  flex-direction: row;
+  gap: 50px
+}
+
+.return-btn-tags {
+  margin-top: 20px;
+}
+
+
 /***********************************************/
 
 /**************Insert Forms*********************/
@@ -335,3 +407,7 @@ div .non-login-msg {
 }
 
 /***********************************************/
+
+.hidden {
+  display: none;
+}

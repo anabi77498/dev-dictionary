@@ -26,6 +26,7 @@ if ($get_id != NULL) {
     techs.description AS 'tech.description',
     techs.resource_name AS 'tech.resource_name',
     techs.resource_url AS 'tech.resource_url',
+    reviews.id AS 'review.id',
     reviews.rating_mean AS 'review.rating_mean',
     reviews.rating_count AS 'review.rating_count',
     reviews.hot_yes_count AS 'review.hot_yes_count',
@@ -74,6 +75,13 @@ if ($record['review.hot_count'] == 1) {
   $vote_caption = $record['review.hot_count'] . ' votes';
 }
 
+
+$show_edits = False;
+$edits_on = (bool) $_GET['edits_on'];
+if ($edits_on) {
+  $show_edits = True;
+}
+
 ?>
 
 
@@ -96,21 +104,32 @@ if ($record['review.hot_count'] == 1) {
 
   <main>
 
-    <div class="record-name-group">
-      <h1 class="record-name"><?php echo $record['tech.name'] ?></h1>
-      <?php if (is_user_logged_in()) { ?>
-        <form method="get" action="/details/edit">
+    <div class="details-top">
+      <div class="record-name-group">
+        <h1 class="record-name"><?php echo $record['tech.name'] ?></h1>
+        <?php if (is_user_logged_in() && $show_edits) { ?>
+          <form method="get" action="/details/edit">
 
-          <!-- hidden input for what is being edited -->
-          <input type="hidden" name="to_edit" value="techs.name">
+            <!-- hidden input for what is being edited -->
+            <input type="hidden" name="to_edit" value="techs.name">
 
-          <!-- hidden input for record -->
-          <input type="hidden" name="record" value="<?php echo htmlspecialchars($record['tech.id']) ?>">
+            <!-- hidden input for record -->
+            <input type="hidden" name="record" value="<?php echo htmlspecialchars($record['tech.id']) ?>">
 
-          <button class=" edit-btn tag-edit" type="submit" aria-label="edit <?php echo htmlspecialchars($record['tech.name']) ?> name">
-            <i style="font-size:22px" class="fa">&#xf044;</i>
-          </button>
-        </form>
+            <button class=" edit-btn tag-edit" type="submit" aria-label="edit <?php echo htmlspecialchars($record['tech.name']) ?> name">
+              <i style="font-size:22px" class="fa" id="edit-btn-id">&#xf044;</i>
+            </button>
+          </form>
+        <?php } ?>
+      </div>
+      <?php if (is_user_logged_in() && !$show_edits) { ?>
+        <a href="/details?<?php echo http_build_query(array('record' => $record['tech.id'], 'edits_on' => '1')) ?>">
+          <button id="edit-mode">Edit Mode</button>
+        </a>
+      <?php } else { ?>
+        <a href="/details?<?php echo http_build_query(array('record' => $record['tech.id'], 'edits_on' => '0')) ?>">
+          <button id="edit-mode">View Mode</button>
+        </a>
       <?php } ?>
     </div>
 
@@ -127,9 +146,21 @@ if ($record['review.hot_count'] == 1) {
                 <?php echo htmlspecialchars($tag_record["tag.name"]) ?>
               </div>
             <?php } ?>
-            <?php if (is_user_logged_in()) { ?>
-              <button class="edit-btn tag-edit"><i style="font-size:22px" class="fa">&#xf044;</i></button>
-            <?php } ?>
+
+            <form class="tag-form" method="get" action="/details/edit">
+
+              <!-- hidden input for record -->
+              <input type="hidden" name="record" value="<?php echo htmlspecialchars($record['tech.id']) ?>">
+
+              <input type="hidden" name="name" value="<?php echo htmlspecialchars($record['tech.name']) ?>">
+
+              <input type="hidden" name="is_tag" value="1">
+
+              <?php if (is_user_logged_in() && $show_edits) { ?>
+                <button class="edit-btn tag-edit" type="submit"><i style="font-size:22px" class="fa" id="edit-btn-id">&#xf044;</i></button>
+            </form>
+
+          <?php } ?>
           </div>
 
           <div class="rating-hot-group">
@@ -151,6 +182,26 @@ if ($record['review.hot_count'] == 1) {
               <p class="hot-p blockquote-footer">This technology does not have enough votes to be considred hot at the moment</p>
             <?php } ?>
           </div>
+          <?php if (is_user_logged_in() && $show_edits) { ?>
+            <div>
+              <form class="tag-form" method="get" action="/details/edit">
+
+                <!-- hidden input for record so we can return back to page -->
+                <input type="hidden" name="tech_id" value="<?php echo htmlspecialchars($record['tech.id']) ?>">
+
+                <!-- hidden input for record -->
+                <input type="hidden" name="record" value="<?php echo htmlspecialchars($record['review.id']) ?>">
+
+                <!-- hidden input for tech name  -->
+                <input type="hidden" name="name" value="<?php echo htmlspecialchars($record['tech.name']) ?>">
+
+                <!-- hidden input for what is being edited -->
+                <input type="hidden" name="is_vote" value="1">
+
+                <button class="edit-btn definition-edit" type="submit">Vote</button>
+              </form>
+            </div>
+          <?php } ?>
         </div>
       </div>
 
@@ -159,7 +210,7 @@ if ($record['review.hot_count'] == 1) {
           <h3>
             <?php echo $record['tech.definition'] ?>
           </h3>
-          <?php if (is_user_logged_in()) { ?>
+          <?php if (is_user_logged_in() && $show_edits) { ?>
             <form method="get" action="/details/edit">
 
               <!-- hidden input for what is being edited -->
@@ -168,7 +219,7 @@ if ($record['review.hot_count'] == 1) {
               <!-- hidden input for record -->
               <input type="hidden" name="record" value="<?php echo htmlspecialchars($record['tech.id']) ?>">
 
-              <button class="edit-btn definition-edit"><i style="font-size:22px" class="fa">&#xf044;</i></button>
+              <button class="edit-btn definition-edit"><i style="font-size:22px" class="fa" id="edit-btn-id">&#xf044;</i></button>
             </form>
           <?php } ?>
         </div>
@@ -176,7 +227,7 @@ if ($record['review.hot_count'] == 1) {
 
         <div class="h3-edit-group">
           <h3>Example</h3>
-          <?php if (is_user_logged_in()) { ?>
+          <?php if (is_user_logged_in() && $show_edits) { ?>
             <form method="get" action="/details/edit">
 
               <!-- hidden input for what is being edited -->
@@ -185,7 +236,7 @@ if ($record['review.hot_count'] == 1) {
               <!-- hidden input for record -->
               <input type="hidden" name="record" value="<?php echo htmlspecialchars($record['tech.id']) ?>">
 
-              <button class="edit-btn definition-edit"><i style="font-size:22px" class="fa">&#xf044;</i></button>
+              <button class="edit-btn definition-edit"><i style="font-size:22px" class="fa" id="edit-btn-id">&#xf044;</i></button>
 
             </form>
           <?php } ?>
@@ -197,7 +248,7 @@ if ($record['review.hot_count'] == 1) {
         <div class="h3-edit-group">
           <h3>Description</h3>
 
-          <?php if (is_user_logged_in()) { ?>
+          <?php if (is_user_logged_in() && $show_edits) { ?>
 
             <form method="get" action="/details/edit">
 
@@ -207,7 +258,7 @@ if ($record['review.hot_count'] == 1) {
               <!-- hidden input for record -->
               <input type="hidden" name="record" value="<?php echo htmlspecialchars($record['tech.id']) ?>">
 
-              <button class="edit-btn definition-edit"><i style="font-size:22px" class="fa">&#xf044;</i></button>
+              <button class="edit-btn definition-edit"><i style="font-size:22px" class="fa" id="edit-btn-id">&#xf044;</i></button>
             </form>
           <?php } ?>
         </div>
@@ -215,7 +266,7 @@ if ($record['review.hot_count'] == 1) {
 
         <div class="h3-edit-group">
           <h3>Resources</h3>
-          <?php if (is_user_logged_in()) { ?>
+          <?php if (is_user_logged_in() && $show_edits) { ?>
 
             <form method="get" action="/details/edit">
 
@@ -228,7 +279,7 @@ if ($record['review.hot_count'] == 1) {
               <!-- hidden input for record -->
               <input type="hidden" name="record" value="<?php echo htmlspecialchars($record['tech.id']) ?>">
 
-              <button class="edit-btn definition-edit"><i style="font-size:22px" class="fa">&#xf044;</i></button>
+              <button class="edit-btn definition-edit"><i style="font-size:22px" class="fa" id="edit-btn-id">&#xf044;</i></button>
             </form>
           <?php } ?>
         </div>
@@ -240,6 +291,9 @@ if ($record['review.hot_count'] == 1) {
   </main>
 
   <?php include 'includes/footer.php'; ?>
+
+  <script src="/public/scripts/jquery-3.6.1.js"></script>
+  <script src="/public/scripts/edit-btn.js"></script>
 </body>
 
 </html>

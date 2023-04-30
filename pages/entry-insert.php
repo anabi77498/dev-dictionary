@@ -254,7 +254,7 @@ if (isset($_POST["upload"]) && is_user_logged_in()) {
           </div>
 
           <div>
-            <p>Please input up to a single decimal places</p>
+            <p>Please input values up to a single decimal places</p>
             <label for="tech-rating">
               Technology Rating (0-5): </label>
             <input id='tech-rating' type="number" min="0" max="5" step=".1" name="tech_rating_mean">
