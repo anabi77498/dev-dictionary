@@ -14,6 +14,8 @@ $get_id_for_vote = $_GET['tech_id'];
 
 $sql_select_query = '';
 
+$prev_url = "/details?" . http_build_query(array('record' => $get_id));
+
 if ($is_tag == NULL && $to_edit2 == NULL && $is_vote == NULL) {
 
   $sql_select_query = "SELECT techs.id AS 'tech.id', " . $to_edit . " AS 'edit.item' FROM techs WHERE techs.id = :techsId;";
@@ -57,6 +59,8 @@ if ($is_tag == NULL && $to_edit2 == NULL && $is_vote == NULL) {
   $curr_value_url = $record['edit.item.url'];
 
   $return_url = "/details/edit?" . http_build_query(array('to_edit' => $to_edit, 'to_edit2' => $to_edit2, 'record' => $get_id));
+
+  $prev_url = "/details?" . http_build_query(array('record' => $get_id));
 };
 
 
@@ -160,8 +164,6 @@ if (isset($_GET['is_tag'])) {
   $tag_results = exec_sql_query($db, "SELECT * FROM tags;");
 
   $tags = $tag_results->fetchAll();
-
-  $prev_url = "/details?" . http_build_query(array('record' => $get_id));
 }
 
 //votes
@@ -235,9 +237,14 @@ if (isset($_POST['make-vote'])) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" type="text/css" href="/public/styles/site.css" />
+  <!-- Citation: Styling via Bootstrap https://getbootstrap.com -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <!-- Citation: Styling via Bootstrap https://getbootstrap.com -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Citation: Styling via Bootstrap https://getbootstrap.com -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  <!-- Citation: Icons imported from FontAwesome https://fontawesome.com -->
+  <script src="https://kit.fontawesome.com/f71311d29e.js" crossorigin="anonymous"></script>
   <title>Developer Dictionary</title>
 
 </head>
@@ -245,7 +252,7 @@ if (isset($_POST['make-vote'])) {
 <body>
   <?php include 'includes/header.php'; ?>
 
-  <main>
+  <main class="details-entry">
 
     <?php if ($record == NULL && $records == NULL && $is_vote == NULL) { ?>
 
@@ -262,7 +269,7 @@ if (isset($_POST['make-vote'])) {
 
         <h2>Edit the technology's name</h2>
 
-        <form action="<?php echo $return_url ?>" method="post" novalidate>
+        <form class="form-name" action="<?php echo $return_url ?>" method="post" novalidate>
 
           <input type="hidden" name="record" value="<?php echo $get_id; ?>">
 
@@ -270,80 +277,92 @@ if (isset($_POST['make-vote'])) {
 
           <div>
 
-            <label for="tech-name">Technology Name: </label>
+            <label for="tech-name" class="head-label">Technology Name: </label>
 
-            <input id='tech-name' type="text" name="new_edit" value="<?php echo $curr_value ?>">
+            <input id='tech-name' class="text form-control" type="text" name="new_edit" value="<?php echo $curr_value ?>">
 
           </div>
-          <button type="submit" name="make-edit">Edit</button>
+          <div class="btn-submit">
+            <button type="submit" name="make-edit">Edit</button>
+          </div>
         </form>
+        <a href="<?php echo $prev_url ?>"><button class="return-btn-tags">Return</button></a>
       <?php } ?>
 
       <?php if ($to_edit == "techs.definition") { ?>
 
         <h2>Edit the technology's definition</h2>
 
-        <form action="<?php echo $return_url ?>" method="post" novalidate>
+        <form class="form-definition" action="<?php echo $return_url ?>" method="post" novalidate>
 
           <input type="hidden" name="record" value="<?php echo $get_id; ?>">
 
           <input type="hidden" name="sql-field" value="definition">
 
-          <div class="textarea-input-edit">
-            <label for="tech-definition">Technology Definition: </label>
+          <div class="text-area textarea-input-edit">
+            <label for="tech-definition" class="head-label">Technology Definition: </label>
 
-            <textarea id='tech-definition' rows="3" cols="60" name="new_edit"><?php echo $curr_value ?></textarea>
+            <textarea id='tech-definition' class="form-control" rows="3" cols="60" name="new_edit"><?php echo $curr_value ?></textarea>
           </div>
 
-          <button type="submit" name="make-edit">Edit</button>
+          <div class="btn-submit">
+            <button type="submit" name="make-edit">Edit</button>
+          </div>
         </form>
+        <a href="<?php echo $prev_url ?>"><button class="return-btn-tags">Return</button></a>
       <?php } ?>
 
       <?php if ($to_edit == "techs.example") { ?>
 
         <h2>Edit the technology's example</h2>
 
-        <form action="<?php echo $return_url ?>" method="post" novalidate>
+        <form class="form-example" action="<?php echo $return_url ?>" method="post" novalidate>
 
           <input type="hidden" name="record" value="<?php echo $get_id; ?>">
 
           <input type="hidden" name="sql-field" value="example">
 
-          <div class="textarea-input-edit">
-            <label for="tech-example">Technology Example: </label>
+          <div class="text-area textarea-input-edit">
+            <label for="tech-example" class="head-label">Technology Example: </label>
 
-            <textarea id='tech-example' rows="3" cols="60" name="new_edit"><?php echo $curr_value ?></textarea>
+            <textarea id='tech-example' rows="3" cols="60" name="new_edit" class="form-control"><?php echo $curr_value ?></textarea>
           </div>
 
-          <button type="submit" name="make-edit">Edit</button>
+          <div class="btn-submit">
+            <button type="submit" name="make-edit">Edit</button>
+          </div>
         </form>
+        <a href="<?php echo $prev_url ?>"><button class="return-btn-tags">Return</button></a>
       <?php } ?>
 
       <?php if ($to_edit == "techs.description") { ?>
 
         <h2>Edit the technology's description</h2>
 
-        <form action="<?php echo $return_url ?>" method="post" novalidate>
+        <form class="form-description" action="<?php echo $return_url ?>" method="post" novalidate>
 
           <input type="hidden" name="record" value="<?php echo $get_id; ?>">
 
           <input type="hidden" name="sql-field" value="description">
 
-          <div class="textarea-input-edit">
-            <label for="tech-description">Technology Description: </label>
+          <div class="text-area textarea-input-edit">
+            <label for="tech-description" class="head-label">Technology Description: </label>
 
-            <textarea id='tech-description' rows="10" cols="60" name="new_edit"><?php echo $curr_value ?></textarea>
+            <textarea id='tech-description' rows="10" cols="60" name="new_edit" class="form-control"><?php echo $curr_value ?></textarea>
           </div>
 
-          <button type="submit" name="make-edit">Edit</button>
+          <div class="btn-submit">
+            <button type="submit" name="make-edit">Edit</button>
+          </div>
         </form>
+        <a href="<?php echo $prev_url ?>"><button class="return-btn-tags">Return</button></a>
       <?php } ?>
 
       <?php if ($to_edit == "techs.resource_name" && $to_edit2 == "techs.resource_url") { ?>
 
         <h2>Edit the technology's resource</h2>
 
-        <form action="<?php echo $return_url ?>" method="post" novalidate>
+        <form class="form-resource" action="<?php echo $return_url ?>" method="post" novalidate>
 
           <input type="hidden" name="record" value="<?php echo $get_id; ?>">
 
@@ -353,21 +372,25 @@ if (isset($_POST['make-vote'])) {
 
           <div>
 
-            <label for="tech-resource-name">Technology Resource: </label>
+            <label for="tech-resource-name" class="head-label">Technology Resource: </label>
 
-            <input id='tech-resource-name' type="text" name="new_edit_1" value="<?php echo $curr_value_name ?>">
-
-          </div>
-
-          <div>
-
-            <label for="tech-resource-url">Technology Url: </label>
-
-            <input id='tech-resource-url' type="url" name="new_edit_2" value="<?php echo $curr_value_url ?>">
+            <input id='tech-resource-name' type="text" class="form-control text" name="new_edit_1" value="<?php echo $curr_value_name ?>">
 
           </div>
-          <button type="submit" name="make-edit">Edit</button>
+
+          <div class="url-section">
+
+            <label for="tech-resource-url" class="head-label">Technology Url: </label>
+
+            <input id='tech-resource-url' type="url" class="form-control text" name="new_edit_2" value="<?php echo $curr_value_url ?>">
+          </div>
+
+          <div class="btn-submit">
+            <button type="submit" name="make-edit">Edit</button>
+          </div>
+
         </form>
+        <a href="<?php echo $prev_url ?>"><button class="return-btn-tags">Return</button></a>
       <?php } ?>
 
     <?php } else if ($is_tag == NULL && $is_vote != NULL) { ?>
@@ -420,7 +443,7 @@ if (isset($_POST['make-vote'])) {
       <div class="tag-edit-body">
 
         <div class="add-tag">
-          <h2 class="add-tag-title">Add a new tag to <?php echo $tech_name ?></h2>
+          <h3 class="add-tag-title">Add a new tag to <?php echo $tech_name ?></h3>
 
           <div class="filter-form">
             <form class="filter-form" action="<?php echo $return_url ?>" method="post">
@@ -446,7 +469,7 @@ if (isset($_POST['make-vote'])) {
         </div>
 
         <div class="del-tag">
-          <h2 class="curr-tags-title">Current tags for <?php echo $tech_name ?></h2>
+          <h3 class="curr-tags-title">Current tags of <?php echo $tech_name ?></h3>
           <div class="tags-group-edit">
             <?php foreach ($records as $tag_record) { ?>
               <div class="tag-x-group">

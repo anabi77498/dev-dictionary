@@ -35,6 +35,8 @@ $review_values = array(
 //no-input => null
 $tag_values = array();
 
+$confirmation = False;
+
 if (isset($_POST["upload"]) && is_user_logged_in()) {
 
   if ($_POST['tag-prog-lang'] != NULL) {
@@ -163,6 +165,8 @@ if (isset($_POST["upload"]) && is_user_logged_in()) {
     if (move_uploaded_file($file["tmp_name"], $upload_storage_path) == False) {
       error_log("Failed to permanently store the uploaded file on the file server. Please check that the server folder exists.");
     }
+
+    $confirmation = True;
   }
 }
 
@@ -175,8 +179,12 @@ if (isset($_POST["upload"]) && is_user_logged_in()) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" type="text/css" href="/public/styles/site.css" />
+  <!-- Citation: Styling via Bootstrap https://getbootstrap.com -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <!-- Citation: Styling via Bootstrap https://getbootstrap.com -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  <!-- Citation: Icons imported from FontAwesome https://fontawesome.com -->
+  <script src="https://kit.fontawesome.com/f71311d29e.js" crossorigin="anonymous"></script>
   <title>Developer Dictionary</title>
 
 </head>
@@ -185,14 +193,14 @@ if (isset($_POST["upload"]) && is_user_logged_in()) {
 
   <?php include 'includes/header.php'; ?>
 
-  <main>
-    <?php if (is_user_logged_in()) { ?>
+  <main class="entry-insert">
+    <?php if (is_user_logged_in() && !$confirmation) { ?>
       <h1>Add a Technology</h1>
       <p>The developer dictionary is an open source, community implemented page. This technology will be viewable by all those who access this website and may be used for various, undisclosed purposes. It is your responsibility as a moderator to input valid information into the dictionary. Your content is subjected to edits from others who maintain moderator privileges.</p>
 
 
       <section>
-        <form action="/entry-insert" method="post" enctype="multipart/form-data">
+        <form class="insert-form" action="/entry-insert" method="post" enctype="multipart/form-data">
 
           <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_FILE_SIZE; ?>">
 
@@ -204,124 +212,135 @@ if (isset($_POST["upload"]) && is_user_logged_in()) {
             <p class="feedback">Something went wrong. Please select a PNG or JPEG/JPG file to upload.</p>
           <?php } ?>
 
-          <div>
-            <label for="tech-name">Technology Name: </label>
-            <input id='tech-name' type="text" name="tech_name">
+          <div class="input-group-1">
+            <label for="tech-name" class="head-label">Technology Name: </label>
+            <input id='tech-name' class="text form-control" type="text" name="tech_name">
           </div>
 
-          <div class="text-area">
-            <label for="tech-definition">
+          <div class="text-area input-group-1">
+            <label for="tech-definition" class="head-label">
               Technology Definition: </label>
-            <textarea id='tech-definition' rows="3" cols="60" name="tech_definition"></textarea>
+            <textarea id='tech-definition' class="form-control" rows="3" cols="60" name="tech_definition"></textarea>
           </div>
 
-          <div class="text-area">
-            <p>Please format as coherent code. Include tabs, enter, new-line, etc </p>
-            <label for="tech-example">
-              Technology example (optional): </label>
-            <textarea id='tech-example' rows="3" cols="60" name="tech_example"></textarea>
+          <div class="text-area input-group-1">
+            <label for="tech-example" class="head-label">
+              Technology Example: </label>
+            <textarea id='tech-example' class="form-control" rows="3" cols="60" name="tech_example"></textarea>
+            <small id="tech-example-help" class="form-text text-muted">*Format as coherent code, including tabs, new-lines, etc</small>
           </div>
 
-          <div class="text-area">
-            <label for="tech-description">
+          <div class="text-area input-group-1">
+            <label for="tech-description" class="head-label">
               Technology Description: </label>
-            <textarea id='tech-description' rows="10" cols="60" name="tech_description"></textarea>
+            <textarea id='tech-description' class="form-control" rows="10" cols="60" name="tech_description"></textarea>
+            <small id="tech-description-help" class="form-text text-muted">*Minimum 150 words</small>
           </div>
 
-          <div>
-            <label for="tech-resource">
-              Additional Resources: </label>
-            <input id='tech-resource' type="text" name="tech_resource">
+          <div class="input-group-1">
+            <label for="tech-resource" class="head-label">
+              Additional Resource: </label>
+            <input id='tech-resource' class="text form-control" type="text" name="tech_resource">
           </div>
 
-          <div>
-            <label for="tech-resource-url">Source URL:</label>
-            <input id='tech-resource-url' type="url" name="tech_resource_url" placeholder="Resource URL">
+          <div class="input-group-1">
+            <label for="tech-resource-url" class="head-label">Resource URL:</label>
+            <input id='tech-resource-url' class="text form-control" type="url" name="tech_resource_url" placeholder="https://www.w3schools.com">
           </div>
 
-
-
-
-          <div>
-            <p>This file must be a JPEG/JPG or PNG</p>
-            <label for="file-upload">File:</label>
+          <div class="input-group-1 media-upload">
+            <label for="file-upload" class="head-label">File:</label>
             <input id="file-upload" type="file" name="jpg-png-file" accept="image/png, image/jpeg, image/jpg,.png, .jpg, .jpeg">
+            <small id="tech-file-help" class="form-text text-muted">*This file must be a JPEG/JPG or PNG. It must be less then 1 MB total. File best displayed when width x height is 1 : 1</small>
           </div>
 
-          <div>
-            <label for="file-source">Source URL (optional):</label>
-            <input id='file-source' type="url" name="file_source" placeholder="URL">
+          <div class="input-group-1">
+            <label for="file-source" class="head-label">Source URL:</label>
+            <input id='file-source' class="text form-control" type="url" name="file_source" placeholder="URL">
+            <small id="tech-file-source-help" class="form-text text-muted">*Optional</small>
           </div>
 
-          <div>
-            <p>Please input values up to a single decimal places</p>
-            <label for="tech-rating">
+          <div class="input-group-1">
+            <label for="tech-rating" class="head-label">
               Technology Rating (0-5): </label>
-            <input id='tech-rating' type="number" min="0" max="5" step=".1" name="tech_rating_mean">
+            <input id='tech-rating' class="text-num form-control" type="number" min="0" max="5" step=".1" name="tech_rating_mean">
+            <small id="tech-rating-help" class="form-text text-muted">*Please input values up to a single decimal places</small>
           </div>
 
 
-          <div role="group" ara-labelledby="hot_choice_head">
+          <div class="input-group-1" role="group" ara-labelledby="hot_choice_head">
 
             <div id="hot_choice_head">
-              Is this Technology Hot in it's industry?
+              <p class="head-label p-label">
+                Do you consider this technology hot in it's industry?
+              </p>
             </div>
 
-            <div>
+            <div class="radio-input">
               <div>
                 <input id='tech-hot-yes' type="radio" name="tech_hot" value='1'>
-                <label for="tech-hot-yes">Yes</label>
+                <label for="tech-hot-yes" class="radio-label">Yes</label>
               </div>
 
               <div>
                 <input id='tech-hot-no' type="radio" name="tech_hot" value='0'>
-                <label for="tech-hot-no">No</label>
+                <label for="tech-hot-no" class="radio-label">No</label>
               </div>
             </div>
           </div>
 
-          <div>Please select a category for the technology</div>
-          <div>
-            <div>
-              <input type="checkbox" name="tag-prog-lang" id="programming-lang" value='1' />
-              <label for="programming-lang">Programming Language</label>
+
+          <div class="input-group-1">
+            <p class="head-label p-label">Please select a category for the technology</p>
+            <div class="check-input">
+              <div class="checkboxes">
+                <input type="checkbox" name="tag-prog-lang" id="programming-lang" value='1' />
+                <label for="programming-lang" class="check-label">Programming Language</label>
+              </div>
+              <div>
+                <input type="checkbox" name="tag-web-dev" id="web-dev" value='2' />
+                <label for="web-dev" class="check-label">Web Development</label>
+              </div>
+              <div>
+                <input type="checkbox" name="tag-app-dev" id="app-dev" value='3' />
+                <label for="app-dev" class="check-label">App Development</label>
+              </div>
+              <div>
+                <input type="checkbox" name="tag-ds-ml-ai" id="ds-ml-ai" value='4' />
+                <label for="ds-ml-ai" class="check-label">Data Science, ML and AI</label>
+              </div>
+              <div>
+                <input type="checkbox" name="tag-game-dev" id="game-dev" value='5' />
+                <label for="game-dev" class="check-label">Game Development</label>
+              </div>
+              <div>
+                <input type="checkbox" name="tag-os" id="os" value='6' />
+                <label for="os" class="check-label">Operating Systems</label>
+              </div>
+              <div>
+                <input type="checkbox" name="tag-testing" id="testing" value='7' />
+                <label for="testing" class="check-label">Software Testing</label>
+              </div>
+              <div>
+                <input type="checkbox" name="tag-dev-tools" id="dev-tools" value='8' />
+                <label for="dev-tools" class="check-label">Development Tools</label>
+              </div>
             </div>
-            <div>
-              <input type="checkbox" name="tag-web-dev" id="web-dev" value='2' />
-              <label for="web-dev">Web Development</label>
-            </div>
-            <div>
-              <input type="checkbox" name="tag-app-dev" id="app-dev" value='3' />
-              <label for="app-dev">App Development</label>
-            </div>
-            <div>
-              <input type="checkbox" name="tag-ds-ml-ai" id="ds-ml-ai" value='4' />
-              <label for="ds-ml-ai">Data Science, ML and AI</label>
-            </div>
-            <div>
-              <input type="checkbox" name="tag-game-dev" id="game-dev" value='5' />
-              <label for="game-dev">Game Development</label>
-            </div>
-            <div>
-              <input type="checkbox" name="tag-os" id="os" value='6' />
-              <label for="os">Operating Systems</label>
-            </div>
-            <div>
-              <input type="checkbox" name="tag-testing" id="testing" value='7' />
-              <label for="testing">Software Testing</label>
-            </div>
-            <div>
-              <input type="checkbox" name="tag-dev-tools" id="dev-tools" value='8' />
-              <label for="dev-tools">Development Tools</label>
-            </div>
+            <small id="checkbox-help" class="form-text text-muted">*Atleast one category must be selected</small>
           </div>
 
-          <div>
+          <div class="submit-btn">
             <button type="submit" name="upload">Upload</button>
           </div>
         </form>
       </section>
 
+    <?php } else if (is_user_logged_in() && $confirmation) { ?>
+      <div class="alert alert-success" role="alert">
+        <p class="success-login-msg"><strong>Success!</strong> We have receieved your submission</p>
+        </p>
+      </div>
+      <p>Return to the <a href="/" class="go-home">home page</a> to view your submission</p>
     <?php } else { ?>
       <div class="alert alert-warning" role="alert">
         <p class="non-login-msg">

@@ -1,29 +1,29 @@
 # Project 3: Design Journey
 
-TODO: Develop insert form for
+<!-- TODO: Develop insert form for
       1) information (techs)
-      2) medias
-TODO: Showcase 80% as "Hot"
+      2) medias -->
+<!-- TODO: Showcase 80% as "Hot" -->
 
-TODO: develop sorting
+<!-- TODO: develop sorting -->
 
-TODO: develop voting & updates on hot score, reviews
+<!-- TODO: develop voting & updates on hot score, reviews -->
 
-TODO: Add more seed data
+<!-- TODO: Add more seed data -->
 
 TODO: Store citations, user.id admin in technology
-    1) Display citations
-    2) Develop "edit mode" on the things made
-    3) CITE LOGO
-    4) CITE EVERYTHING
+    1) Display citations COMMENTS
+    2) Conditional citations
 
-TODO: only show hot if count > 5
+<!-- TODO: only show hot if count > 5 -->
 
-TODO: constraints on writing (min 300 words for description etc)
+<!-- TODO: constraints on writing (min 300 words for description etc) -->
 
-TODO: display all tags on details page
+<!-- TODO: display all tags on details page -->
 
-TODO: fix login
+<!-- TODO: fix login -->
+
+<!-- TODO: if seed, then show citation only {id in 1,12} -->
 
 **For each milestone, complete only the sections that are labeled with that milestone.** Refine all sections before the final submission.
 

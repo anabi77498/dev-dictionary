@@ -258,19 +258,19 @@ function login_form($action, $messages)
   <ul class="login">
     <?php
     foreach ($messages as $message) {
-      echo "<li class=\"feedback\"><strong>" . htmlspecialchars($message) . "</strong></li>\n";
+      echo "<div class=\"alert alert-warning\" role=\"alert\"><strong>" . htmlspecialchars($message) . "</strong></div>\n";
     } ?>
   </ul>
 
   <form class="login" action="<?php echo htmlspecialchars($action) ?>" method="post" novalidate>
-    <div class="label-input">
-      <label for="username">Username:</label>
-      <input id="username" type="text" name="login_username" value="<?php echo htmlspecialchars($sticky_login_username); ?>" required />
+    <div class="label-input username-group">
+      <label for="username" class="head-label username-label">Username:</label>
+      <input id="username" type="text" name="login_username" class="text form-control" value="<?php echo htmlspecialchars($sticky_login_username); ?>" required />
     </div>
 
-    <div class="label-input">
-      <label for="password">Password:</label>
-      <input id="password" type="password" name="login_password" required />
+    <div class="label-input password-group">
+      <label for="password" class="head-label password-label">Password:</label>
+      <input id="password" class="text form-control" type="password" name="login_password" required />
     </div>
 
     <div class="align-right">

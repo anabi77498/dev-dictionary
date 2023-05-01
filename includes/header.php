@@ -1,5 +1,6 @@
 <header class="navbar navbar-light bg-nav-ft">
   <a href="/">
+    <!-- THIS IMAGE / LOGO WAS CREATED BY ME, ASAD NABI (AN448)-->
     <img class="d-inline-block align-top logo" src="/public/images/logo.png" alt="website logo" height=75 width=75>
   </a>
   <h1 class="title">The Developer Dictionary</h1>
