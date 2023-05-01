@@ -256,19 +256,14 @@ Table: techs
 
 - id: INT {U, AI, NN, PK},
 - name: INT {U, NN}
-- media: --------- ?
+- file_ext: TEXT {NN}
+- file_source TEXT {}
 - definition: TEXT {U, NN}
 - example: TEXT {}
 - description: TEXT {U, NN}
-- resource_id INT {U, NN FK -> resources.id}
+- resource_name: TEXT {NN}
+- resource_url: TEXT {NN}
 - review_id INT {U, NN FK -> reviews.id}
-
-Table: resources
-
-- id: INT {U, AI, NN, PK}
-- name: TEXT {NN}
-- subject: TEXT {NN}
-- url: TEXT {NN}
 
 Table: reviews
 
@@ -276,6 +271,7 @@ Table: reviews
 - rating_mean: REAL {NN}
 - rating_count: INT {NN}
 - hot_yes_count: INT {NN}
+- hot_pct: REAL {NN}
 - hot_count: INT {NN}
 
 Table: tags
@@ -289,7 +285,18 @@ Table: tech_tags
 - tech_id INT {NN, FK -> tech.id}
 - tag_id INT {NN, FK -> tags.id}
 
-(if hot_count/vote_count > .8, it's hot)
+Table: users
+- id: INT {U, AI, NN, PK}
+- name: TEXT {NN}
+- email: TEXT {}
+- username: TEXT {U, NN}
+- password: TEXT {NN}
+
+Table: sessions
+- id: INT {U, AI, NN, PK}
+- user_id: INT {NN,PK}
+- session: TEXT {NN, U}
+- last_login: TEXT {NN}
 
 **revisions**
 I revised the database to make fit the project requirements and enable proper joining. I also made the tag name text rather then int as previously planned and also made the rating_mean to be a REAL type to support decimals
@@ -330,6 +337,113 @@ SELECT techs.name AS 'tech.name',
     WHERE techs.id = :techsId;
 ```
 
+```
+$to_edit is some field to be sticky value
+$update_field is some field to be edited
+
+SELECT techs.id AS 'tech.id', " . $to_edit . " AS 'edit.item' FROM techs WHERE techs.id = :techsId;
+
+SELECT techs.id AS 'tech.id', " . $to_edit . " AS 'edit.item.name', " . $to_edit2 . " AS 'edit.item.url' FROM techs WHERE techs.id = :techsId
+
+UPDATE techs SET " . $update_field . " = :edit WHERE (id = :id);
+
+UPDATE techs SET " . $update_field_1 . " = :edit_1, " . $update_field_2 . " = :edit_2" .  " WHERE (id = :id);
+
+INSERT INTO tech_tags (tech_id, tag_id) VALUES (:tech_id, :tag_id);
+
+DELETE FROM tech_tags WHERE id = :tech_tag_id;
+
+SELECT tech_tags.id AS 'tech_tag.id',
+  tech_tags.tech_id AS 'tech_tag.tech_id',
+  tech_tags.tag_id AS 'tech_tag.tag_id',
+  tags.name AS 'tag.name'
+  FROM tech_tags
+  INNER JOIN tags ON tech_tags.tag_id = tags.id
+  WHERE tech_tags.tech_id = :techsId;
+
+SELECT * FROM tags
+
+UPDATE reviews SET rating_mean = :new_rating_mean, rating_count = :new_rating_count, hot_yes_count = :new_hot_yes_count, hot_pct = :new_hot_pct, hot_count = :new_hot_count WHERE (id = :id);
+```
+
+```
+SELECT techs.id AS 'tech.id',
+    techs.name AS 'tech.name',
+    techs.definition AS 'tech.definition',
+    techs.example AS 'tech.example',
+    techs.description AS 'tech.description',
+    techs.resource_name AS 'tech.resource_name',
+    techs.resource_url AS 'tech.resource_url',
+    reviews.id AS 'review.id',
+    reviews.rating_mean AS 'review.rating_mean',
+    reviews.rating_count AS 'review.rating_count',
+    reviews.hot_yes_count AS 'review.hot_yes_count',
+    reviews.hot_pct AS 'review.hot_pct',
+    reviews.hot_count AS 'review.hot_count',
+    techs.file_ext AS 'tech.file_ext',
+    techs.file_source AS 'tech.file_source',
+    tags.name AS 'tag.name'
+    FROM techs
+    INNER JOIN reviews ON techs.review_id = reviews.id
+    INNER JOIN tech_tags ON techs.id = tech_tags.tech_id
+    INNER JOIN tags ON tech_tags.tag_id = tags.id
+    WHERE techs.id = :techsId;
+
+SELECT tech_tags.tech_id AS 'tech_tag.tech_id',
+          tech_tags.tag_id AS 'tech_tag.tag_id',
+          tags.name AS 'tag.name'
+          FROM tech_tags
+          INNER JOIN tags ON tech_tags.tag_id = tags.id
+          WHERE tech_tags.tech_id = :techsId;
+
+DELETE FROM techs WHERE id = :tech_id;
+
+DELETE FROM reviews WHERE id = :review_id;
+
+DELETE FROM tech_tags WHERE tech_id = :techId
+```
+
+```
+INSERT INTO reviews (rating_mean,
+    rating_count, hot_yes_count, hot_pct, hot_count) VALUES
+    (:rating_mean, :rating_count, :hot_yes_count, :hot_pct, :hot_count);
+
+INSERT INTO
+    techs (name, definition, example, description, file_ext, file_source,
+    resource_name, resource_url, review_id) VALUES
+    (:tech_name, :tech_definition, :tech_example, :tech_description,
+    :tech_file_ext, :tech_file_source, :tech_resource_name,
+    :tech_resource_url, :review_id
+    );
+
+INSERT INTO
+      tech_tags (tech_id, tag_id) VALUES (:tech_id, :tag_id);
+```
+
+```
+SELECT techs.id AS 'tech.id',
+    techs.name AS 'tech.name',
+    techs.file_ext AS 'tech.file_ext',
+    techs.file_source AS 'tech.file_source',
+    tags.name AS 'tag.name'
+    FROM techs
+    INNER JOIN tech_tags ON techs.id = tech_tags.tech_id
+    INNER JOIN tags ON tech_tags.tag_id = tags.id
+    WHERE tags.id = :tag ORDER BY techs.name ASC;
+
+SELECT techs.id AS 'tech.id',
+  techs.name AS 'tech.name',
+  techs.file_ext AS 'tech.file_ext',
+  techs.file_source AS 'tech.file_source'
+  FROM techs ORDER BY techs.name ASC;
+
+SELECT tech_tags.tech_id AS 'tech_tag.tech_id',
+          tech_tags.tag_id AS 'tech_tag.tag_id',
+          tags.name AS 'tag.name'
+          FROM tech_tags
+          INNER JOIN tags ON tech_tags.tag_id = tags.id
+          WHERE tech_tags.tech_id = :techsId;
+```
 
 ## Complete & Polished Website (Final Submission)
 
@@ -338,7 +452,6 @@ SELECT techs.name AS 'tech.name',
 > What do you do to improve the accessibility of your site?
 
 I had a great deal of contrast errors, particularly due to my choice of tag colors and links. I handled these accordingly by making background darker of white text and vice versa so that my website is more accessible
-
 
 ### Self-Reflection (Final Submission)
 > Reflect on what you learned during this assignment. How have you improved from Projects 1 and 2?
