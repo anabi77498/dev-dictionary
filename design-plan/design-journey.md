@@ -419,4 +419,4 @@ _How to delete an entry:_
 4. Links/buttons will appear next to each item where they can be edited and updated
 5. On the bottom, there is a button of a white background and red text that says 'Delete Technology'
 6. Click this button, and the technology will be deleted and you will be sent back to the home page
-  - All occurrences of the tag, the 
+   - All occurrences of the entry will be deleted (techs, tech_tag, reviews) and the file upload will be deleted
