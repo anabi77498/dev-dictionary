@@ -1,30 +1,5 @@
 # Project 3: Design Journey
 
-<!-- TODO: Develop insert form for
-      1) information (techs)
-      2) medias -->
-<!-- TODO: Showcase 80% as "Hot" -->
-
-<!-- TODO: develop sorting -->
-
-<!-- TODO: develop voting & updates on hot score, reviews -->
-
-<!-- TODO: Add more seed data -->
-
-TODO: Store citations, user.id admin in technology
-    1) Display citations COMMENTS
-    2) Conditional citations
-
-<!-- TODO: only show hot if count > 5 -->
-
-<!-- TODO: constraints on writing (min 300 words for description etc) -->
-
-<!-- TODO: display all tags on details page -->
-
-<!-- TODO: fix login -->
-
-<!-- TODO: if seed, then show citation only {id in 1,12} -->
-
 **For each milestone, complete only the sections that are labeled with that milestone.** Refine all sections before the final submission.
 
 You are graded on your design process. If you later need to update your plan, **do not delete the original plan, rather leave it in place and append your new plan _below_ the original.** Then explain why you are changing your plan. Any time you update your plan, you're documenting your design process!
@@ -362,31 +337,31 @@ SELECT techs.name AS 'tech.name',
 > Tell us what issues you discovered during your accessibility audit.
 > What do you do to improve the accessibility of your site?
 
-TODO: audit fixes
+I had a great deal of contrast errors, particularly due to my choice of tag colors and links. I handled these accordingly by making background darker of white text and vice versa so that my website is more accessible
 
 
 ### Self-Reflection (Final Submission)
 > Reflect on what you learned during this assignment. How have you improved from Projects 1 and 2?
 
-TODO: reflection
+This was a hard yet fruitful assignment. I feel that I learned alot and I also really enjoyed the process. It felt very new and I am glad that I had the experience. I feel that I am more aware as a web developer as I was in project 1 and 2. I felt that solutions came more naturally and I was able to think about what I wanted to implement in a more structured manner
 
 
 > Take some time here to reflect on how much you've learned since you started this class. It's often easy to ignore our own progress. Take a moment and think about your accomplishments in this class. Hopefully you'll recognize that you've accomplished a lot and that you should be very proud of those accomplishments! (1-3 sentences)
 
-TODO: reflection
+I am glad I took this course. I feel I learned alot of valuable tools and definitely gained immense experience. I am proud of the projects I have created.
 
 
 ### Collaborators (Final Submission)
 > List any persons you collaborated with on this project.
 
-TODO: list your collaborators
+No One
 
 
 ### Reference Resources (Final Submission)
 > Please cite any external resources you referenced in the creation of your project.
 > (i.e. W3Schools, StackOverflow, Mozilla, etc.)
 
-TODO: list reference resources
+W3Schools, Mozilla Reference Document, Font Awesome reference document, bootstrap reference document
 
 
 ### Grading: User Accounts (Final Submission)
@@ -395,13 +370,12 @@ TODO: list reference resources
 
 **Administrator User:**
 
-- Username: TODO: username
-- Password: TODO: password
+- Username: asad
+- Password: monkey
 
 **Consumer User:**
 
-- Username: TODO: username
-- Password: TODO: password
+- This website does not support consumer log in
 
 **Note:** Not all websites will support consumer log in. If your website doesn't, say so.
 
@@ -414,25 +388,34 @@ TODO: list reference resources
 
 _View all entries:_
 
-1. TODO: instructions
-2.
+1. Go to the home page ('/') and scroll down slightly
 
 _View all entries for a tag:_
 
-1. TODO: instructions
-2.
+1. Go to the home page ('/') and scroll down slightly
+2. On the left hand side, it will say "Filter by: " and a tag can be selected via the dropdown (only one tag can be selected at a time)
+3. To clear a tag, click the red X (❌) next to the tag (it will return to the unfiltered version)
 
 _View a single entry's details:_
 
-1. TODO: instructions
-2.
+1. Click on the image of any entry, it will take you to the respective 'details' page
 
 _How to insert and upload a new entry:_
 
-1. TODO: instructions
-2.
+1. Login with the credentials (username: asad, password: monkey), ensure you remain logged in
+2. Scroll to the bottom of the home page ('/') where the image entries end
+3. There will be a dashed border with a "add entry" caption and image
+4. Click this, it will transport you to a entry-insert page
+5. A form will appear and if you fill it out, it will add a page.
+   - the technology name, technology definition, technology description should be UNIQUE
+   - Fields are assumed to be filled out in it's entirety unless specified optional
+   - Images with large sizes may take time
 
 _How to delete an entry:_
 
-1. TODO: instructions
-2.
+1. Login with the credentials (username: asad, password: monkey), ensure you remain logged in
+2. To delete a specific entry, access that entries detail page
+3. On the details page, click the "Edit Mode" button on the top right
+4. Links/buttons will appear next to each item where they can be edited and updated
+5. On the bottom, there is a button of a white background and red text that says 'Delete Technology'
+6. Click this button, and the technology will be deleted and you will be sent back to the home page
