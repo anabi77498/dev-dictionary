@@ -102,6 +102,10 @@ if (isset($_GET['delete_entry']) && is_user_logged_in()) {
     ':review_id' => $del_rev_id
   ));
 
+  $delete_query_tech_tag = exec_sql_query($db, "DELETE FROM tech_tags WHERE tech_id = :techId", array(
+    ':techId' => $del_id
+  ));
+
   $header_val = 'Location: ' . '/';
 
   if ($delete_query_techs && $delete_query_reviews) {
