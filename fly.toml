@@ -1,0 +1,11 @@
+# fly.toml app configuration file generated for developer-dictionary on 2023-05-08T13:35:37Z
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "developer-dictionary"
+primary_region = "ewr"
+
+[http_service]
+  internal_port = 80
+  force_https = true

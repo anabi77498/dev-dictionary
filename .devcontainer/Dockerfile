@@ -15,6 +15,10 @@ RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/
 # [Optional] Uncomment this line to install global node packages.
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
 
+# install Fly.io
+RUN su vscode -c "curl -L https://fly.io/install.sh | sh"
+ENV PATH="${PATH}:/home/vscode/.fly/bin"
+
 # 2300 configuration
 RUN git config --system pull.rebase false
 COPY info2300.ini /usr/local/etc/php/conf.d/
