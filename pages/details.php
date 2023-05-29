@@ -176,9 +176,9 @@ if (isset($_GET['delete_entry']) && is_user_logged_in()) {
             <div>
               <small class="text-muted">
                 <!-- CITATION: Image was sourced from <?php echo $record['tech.file_source'] ?> -->
-                <cite>
+                <!-- <cite>
                   Image Source: <a href="<?php echo $record['tech.file_source'] ?>">source</a>
-                </cite>
+                </cite> -->
               </small>
             </div>
           <?php } ?>
@@ -279,7 +279,7 @@ if (isset($_GET['delete_entry']) && is_user_logged_in()) {
                 <small class="text-muted">
                   <cite>
                     <!-- CITATION: Image was sourced from <?php echo $record['tech.resource_url'] ?> -->
-                    Information Source: <a href="<?php echo $record['tech.resource_url'] ?>"><?php echo $record['tech.resource_name'] ?></a>
+                    <!-- Information Source: <a href="<?php echo $record['tech.resource_url'] ?>"><?php echo $record['tech.resource_name'] ?></a> -->
                   </cite>
                 </small>
               </div>
@@ -314,7 +314,7 @@ if (isset($_GET['delete_entry']) && is_user_logged_in()) {
               <small class="text-muted">
                 <cite>
                   <!-- CITATION: Image was sourced from <?php echo $record['tech.resource_url'] ?> -->
-                  Information Source: <a href="<?php echo $record['tech.resource_url'] ?>"><?php echo $record['tech.resource_name'] ?></a>
+                  <!-- Information Source: <a href="<?php echo $record['tech.resource_url'] ?>"><?php echo $record['tech.resource_name'] ?></a> -->
                 </cite>
               </small>
             </div>
@@ -345,7 +345,7 @@ if (isset($_GET['delete_entry']) && is_user_logged_in()) {
               <small class="text-muted">
                 <cite>
                   <!-- CITATION: Image was sourced from <?php echo $record['tech.resource_url'] ?> -->
-                  Information Source: <a href="<?php echo $record['tech.resource_url'] ?>"><?php echo $record['tech.resource_name'] ?></a>
+                  <!-- Information Source: <a href="<?php echo $record['tech.resource_url'] ?>"><?php echo $record['tech.resource_name'] ?></a> -->
                 </cite>
               </small>
             </div>

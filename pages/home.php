@@ -154,9 +154,9 @@ foreach ($tags as $tag) {
                         <div>
                           <small class="text-muted">
                             <!-- CITATION: Image was sourced from <?php echo htmlspecialchars($record['tech.file_source']) ?> -->
-                            <cite>
+                            <!-- <cite>
                               Image Source: <a href="<?php echo htmlspecialchars($record['tech.file_source']) ?>">source</a>
-                            </cite>
+                            </cite> -->
                           </small>
                         </div>
                       <?php } ?>
