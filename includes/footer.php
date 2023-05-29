@@ -5,15 +5,15 @@
     </div>
     <div>
       <a href="https://github.com/anabi77498" class="a-icon-style me-4 text-reset">
-        .<i class="fab fa-github"></i>
+        <i class="fab fa-github"></i>
       </a>
 
       <a href="https://github.coecis.cornell.edu/an448" class="a-icon-style me-4 text-reset">
-        .<i class="fab fa-github"></i>
+        <i class="fab fa-github"></i>
       </a>
 
       <a href="https://www.linkedin.com/in/asadnabi7/" class=" a-icon-style me-4 text-reset">
-        .<i class="fab fa-linkedin"></i>
+        <i class="fab fa-linkedin"></i>
       </a>
 
     </div>
