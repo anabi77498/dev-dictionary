@@ -369,7 +369,7 @@ VALUES
       }
     }',
     "Java is one of the most popular programming languages in use today, particularly for enterprise and web applications. It was originally developed by Sun Microsystems and later acquired by Oracle Corporation. Java is designed to be portable, secure, and platform-independent, meaning that it can run on any operating system or platform that has a Java Virtual Machine (JVM) installed. Java's syntax is similar to that of C++, but it is easier to read and write than C++. Java is also an object-oriented language, which means that it is designed around the concept of objects, which can contain data and methods for manipulating that data. Java is used for a wide range of applications, from desktop and mobile apps to web servers and enterprise software. It is also the primary language used for developing Android apps.",
-    "jpg",
+    "png",
     "https://www.dreamstime.com/java-logo-editorial-illustrative-white-background-eps-download-vector-jpeg-banner-java-logo-editorial-illustrative-white-image208329454",
     'Java Documentation',
     'https://docs.oracle.com/en/java/javase/16/docs/api/index.html',
