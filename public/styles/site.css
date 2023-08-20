@@ -2,11 +2,6 @@ html {
   background-color: #c3e6ff;
 }
 
-.home,
-footer,
-header {
-  min-width: 835px;
-}
 
 .container {
   display: flex;
@@ -249,10 +244,17 @@ main {
 .about-us-footer {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  gap: 60px;
-  min-width: 695px;
+  justify-content: space-evenly;
+  gap: 30px;
+  align-items: center;
+  padding-left: 30px;
+  /* min-width: 695px; */
 }
+
+.about-us-footer div span a {
+  color: rgb(0, 40, 128)
+}
+
 
 .section-2 {
   margin-top: 20px;
@@ -303,6 +305,41 @@ main {
   margin-bottom: 40px;
 }
 
+.header-left{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center
+}
+
+.header-left h4 {
+  margin-top: 10px;
+}
+
+.navlink {
+  text-decoration: none;
+}
+
+.btn-style {
+  background-color: #ffffff6d !important
+}
+
+.btn-style:hover {
+  background-color: #0275d8 !important
+}
+
+.header-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
 
 /******** CSS STYLING FOR DETAILS PAGE *********/
@@ -698,6 +735,12 @@ form .media-upload input {
 }
 
 /***********************************************/
+
+/**************** About page********************/
+
+
+/***********************************************/
+
 
 .hidden {
   display: none;

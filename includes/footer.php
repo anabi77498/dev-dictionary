@@ -23,26 +23,23 @@
   <section class="section-2">
     <h4>About Us</h4>
     <h6 class="text-muted">We encourage you to contact us about issues with the site, feedback and or a small chat!</h5>
-      <div class="container section-footer-2">
         <div class="about-us-footer">
           <!-- Links -->
           <div>
-            <p><i class="fas fa-home me-3"></i> New York City, NY</p>
+            <p><i class="fas fa-home me-3"></i><span>NYC, NY</span></p>
           </div>
           <div>
-            <p><i class="fas fa-graduation-cap me-3"></i> Cornell University</p>
+            <p><i class="fas fa-graduation-cap me-3"></i><span>Cornell University</span></p>
           </div>
           <div>
             <p>
-              <i class="fas fa-envelope me-3"></i>
-              an448@cornell.edu
+              <i class="fas fa-envelope me-3"></i><span>an448@cornell.edu</span>
             </p>
           </div>
           <div>
-            <p><i class="fas fa-phone me-3"></i> + 929 409 1091</p>
+            <p><i class="fas fa-laptop me-3"></i><span><a href="https://asadnabi.com">Asad's Portfolio</a></span></p>
           </div>
         </div>
-      </div>
       </div>
   </section>
   <section class="section-3">

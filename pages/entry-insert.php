@@ -1,4 +1,7 @@
 <?php
+$is_home = False;
+$is_about = False;
+
 // 1 MB = 2000000 bytes
 define("MAX_FILE_SIZE", 1000000);
 

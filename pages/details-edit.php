@@ -1,5 +1,8 @@
 <?php
 
+$is_home = False;
+$is_about = False;
+
 $to_edit = $_GET['to_edit'];
 
 $to_edit2 = $_GET['to_edit2'];

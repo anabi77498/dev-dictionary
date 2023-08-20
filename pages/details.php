@@ -1,4 +1,6 @@
 <?php
+$is_home = False;
+$is_about = False;
 
 const RATING = array(
   1 => '★☆☆☆☆',

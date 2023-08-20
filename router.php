@@ -10,6 +10,7 @@ process_session_params($db, $session_messages);
 
 const ROUTES = array(
   '/' => 'pages/home.php',
+  '/about' => 'pages/about.php',
   '/details' => 'pages/details.php',
   '/login' => 'pages/login.php',
   '/entry-insert' => 'pages/entry-insert.php',
