@@ -742,3 +742,14 @@ VALUES
     'asad',
     '$2y$10$QtCybkpkzh7x5VN11APHned4J8fu78.eFXlyAMmahuAaNcbwZ7FH.' -- monkey
   );
+
+INSERT INTO
+  users (id, name, email, username, password)
+VALUES
+  (
+    2,
+    'Asad Nabi',
+    'an448@cornell.edu',
+    'test123',
+    '$2y$10$QtCybkpkzh7x5VN11APHned4J8fu78.eFXlyAMmahuAaNcbwZ7FH.' -- monkey
+  );

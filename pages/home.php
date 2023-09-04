@@ -1,8 +1,10 @@
 <?php
 
+$is_home = True;
+$is_about = False;
+
 // Open connection to the database
 $db = init_sqlite_db('db/site.sqlite', 'db/init.sql');
-
 //checking filters
 $is_filtered = FALSE;
 $filter_select = "";
@@ -80,6 +82,7 @@ foreach ($tags as $tag) {
 
   <!-- Citation: Icons imported from FontAwesome https://fontawesome.com -->
   <script src="https://kit.fontawesome.com/f71311d29e.js" crossorigin="anonymous"></script>
+  <link rel="icon" href="../public/images/logo.png" type="image/icon type">
   <title>Developer Dictionary</title>
 
 </head>
@@ -88,16 +91,22 @@ foreach ($tags as $tag) {
 
   <?php include 'includes/header.php'; ?>
 
+  <?php include 'includes/banner.php'; ?>
+
   <main class="home">
 
     <?php if (is_user_logged_in()) { ?>
       <p>Welcome <strong><?php echo htmlspecialchars($current_user['name']); ?></strong>! You are currently logged in and able to access moderation features.</p>
+    <?php } else { ?>
+      <p>You are not currently logged in. If you wish to sign up and request moderation features, please email <em>an448@cornell.edu</em></p>
+      <div class="alert alert-primary alert-log-in-home" role="alert">
+        We are currently in an open-source test stage, you may use the example login
+        <ul class="example login">
+          <li><span>Username:</span> test123</li>
+          <li><span>Password:</span> monkey</li>
+        </ul>
+      </div>
     <?php } ?>
-
-    <h2>Welcome to the Developer Dictionary!</h2>
-    <p>This is a dictionary about tricky, unecessarily complicated software engineering and computer science technologies and concepts. We simplify these terms down so that everyone can understand! Our aim is to demystify jargon and technical language, providing clear explanations that empower readers to confidently navigate complex topics. Whether you're a seasoned software developer or just starting out, our dictionary is designed to help you learn and grow your understanding of the field. From obscure programming languages to advanced algorithms, we break down the most difficult concepts in a way that's accessible to all.</p>
-
-    <p>The dictionary is constantly refined and reviewed by industry software engineers and computer scientists!</p>
 
     <div class="home-body">
       <h2>Technologies</h2>
@@ -117,7 +126,7 @@ foreach ($tags as $tag) {
                   <?php } ?>
                 </select>
                 <div class="filter-submit-btn">
-                  <button type="submit" name="filter-tag">Filter</button>
+                  <button class="btn btn-outline-primary btn-style filter-btn" type="submit" name="filter-tag">Filter</button>
                 </div>
               </form>
             </div>
@@ -126,7 +135,7 @@ foreach ($tags as $tag) {
               <p>
               <ul class="filter-list-ul">
                 <li class="filter-list">
-                  <span class="badge badge-pill badge-info bg-tag-color tag-mg"><?php echo $filtered_by ?> </span><a href="/" class="exit-filter">❌</a></span>
+                  <span class="badge badge-pill badge-info bg-tag-color tag-mg"><?php echo $filtered_by ?> </span><a href="/" class="exit-filter">&#x2717;</a></span>
                 </li>
               </ul>
           </aside>
@@ -220,9 +229,6 @@ foreach ($tags as $tag) {
         </div>
       </section>
     </div>
-    <?php if (!is_user_logged_in()) { ?>
-      <p>You are not currently logged in. If you wish to sign up and request moderation features, please email <em>an448@cornell.edu</em></p>
-    <?php } ?>
   </main>
   <?php include 'includes/footer.php'; ?>
 </body>

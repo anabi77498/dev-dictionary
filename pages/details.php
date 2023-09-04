@@ -1,4 +1,6 @@
 <?php
+$is_home = False;
+$is_about = False;
 
 const RATING = array(
   1 => '★☆☆☆☆',
@@ -131,6 +133,7 @@ if (isset($_GET['delete_entry']) && is_user_logged_in()) {
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   <!-- Citation: Icons imported from FontAwesome https://fontawesome.com -->
   <script src="https://kit.fontawesome.com/f71311d29e.js" crossorigin="anonymous"></script>
+  <link rel="icon" href="../public/images/logo.png" type="image/icon type">
   <title>Developer Dictionary</title>
 
 </head>
@@ -151,7 +154,7 @@ if (isset($_GET['delete_entry']) && is_user_logged_in()) {
             <!-- hidden input for record -->
             <input type="hidden" name="record" value="<?php echo htmlspecialchars($record['tech.id']) ?>">
 
-            <button class=" edit-btn tag-edit" type="submit" aria-label="edit <?php echo htmlspecialchars($record['tech.name']) ?> name">
+            <button class=" edit-btn tag-edit btn" type="submit" aria-label="edit <?php echo htmlspecialchars($record['tech.name']) ?> name">
               <i style="font-size:22px" class="fa" id="edit-btn-id">&#xf044;</i>
             </button>
           </form>
@@ -159,11 +162,11 @@ if (isset($_GET['delete_entry']) && is_user_logged_in()) {
       </div>
       <?php if (is_user_logged_in() && !$show_edits) { ?>
         <a href="/details?<?php echo http_build_query(array('record' => $record['tech.id'], 'edits_on' => '1')) ?>">
-          <button id="edit-mode">Edit Mode</button>
+          <button id="edit-mode" class="btn btn-primary btn-edit">Edit Mode</button>
         </a>
       <?php } else if (is_user_logged_in()) { ?>
         <a href="/details?<?php echo http_build_query(array('record' => $record['tech.id'], 'edits_on' => '0')) ?>">
-          <button id="edit-mode">View Mode</button>
+          <button id="edit-mode" class="btn btn-primary btn-view">View Mode</button>
         </a>
       <?php } ?>
     </div>
