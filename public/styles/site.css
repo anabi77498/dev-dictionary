@@ -59,6 +59,11 @@ main {
 
 .login_home {
   margin-right: 15.3px;
+  text-decoration: none;
+}
+
+.login_home:hover {
+  opacity: .5;
 }
 
 .logout {
@@ -115,6 +120,18 @@ main {
   margin-top: 10px;
 }
 
+.filter-submit-btn .filter-btn {
+  color: rgb(0, 81, 255);
+  background-color: rgb(57, 173, 255);
+  padding: 5px;
+  padding-bottom: 3px;
+  padding-top: 3px
+}
+
+.filter-submit-btn .filter-btn:hover {
+  background-color: rgb(0, 81, 255);
+  color: rgb(255, 255, 255)
+}
 
 .filter-form {
   max-width: 250px;
@@ -396,9 +413,8 @@ header {
 }
 
 .filter-list .exit-filter {
-  background-color: #ffffff;
-  padding: 2px;
-  border-radius: 10%;
+  color: red;
+  font-weight: 800;
 }
 
 .record-ratings-tags {
@@ -487,12 +503,22 @@ cite a,
 
 /******************details/edit********************/
 
-.edit-btn {
+/* .edit-btn {
   background-color: rgb(255, 255, 255);
   border-radius: 20%;
   padding-bottom: 0;
   align-self: center;
   margin-bottom: 20px;
+} */
+
+.btn-edit {
+  background-color: rgb(224, 163, 72) !important;
+  border: none !important
+}
+
+.btn-view {
+  background-color: rgb(80, 136, 255) !important;
+  border: none !important
 }
 
 .delete-btn {
@@ -734,9 +760,57 @@ form .media-upload input {
   margin: 0
 }
 
+.alert-log-in {
+  margin-top: 30px;
+  max-width: 600px;
+}
+
+.bad-login {
+  margin-left: -30px;
+  max-width: 300px;
+}
+
+
+.example-login {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
 /***********************************************/
 
-/**************** About page********************/
+/**************** Banner page********************/
+
+.banner {
+  height: 725px;
+  background-image: url("../images/banner3.png");
+}
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.banner div {
+  height: 100%;
+  width: 100%;
+  border-top: solid 2px rgb(0, 0, 0);
+  border-bottom: solid 2px rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px
+}
+
+.banner div h1 {
+  color:rgb(6, 6, 6);
+  font-size: 72px;
+  text-align: center;
+}
 
 
 /***********************************************/

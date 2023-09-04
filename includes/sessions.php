@@ -258,7 +258,7 @@ function login_form($action, $messages)
   <ul class="login">
     <?php
     foreach ($messages as $message) {
-      echo "<div class=\"alert alert-warning\" role=\"alert\"><strong>" . htmlspecialchars($message) . "</strong></div>\n";
+      echo "<div class=\"alert alert-warning bad-login\" role=\"alert\"><strong class=\"msg\">" . htmlspecialchars($message) . "</strong></div>\n";
     } ?>
   </ul>
 

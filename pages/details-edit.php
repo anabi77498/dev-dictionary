@@ -248,6 +248,7 @@ if (isset($_POST['make-vote'])) {
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   <!-- Citation: Icons imported from FontAwesome https://fontawesome.com -->
   <script src="https://kit.fontawesome.com/f71311d29e.js" crossorigin="anonymous"></script>
+  <link rel="icon" href="../public/images/logo.png" type="image/icon type">
   <title>Developer Dictionary</title>
 
 </head>

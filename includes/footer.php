@@ -45,7 +45,7 @@
   <section class="section-3">
     <div class="text-center p-4">
       <p>
-        This website is a project created by Asad Nabi. It is currently not open-source and may carry restricted access. This website is powered by <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a> and <a class="text-reset fw-bold" href="https://fontawesome.com/">fontawesome.com</a>
+        This website is a project created by Asad Nabi. The repository is currently open-source and I ecourage feedback on my work. This website is powered by <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a> and <a class="text-reset fw-bold" href="https://fontawesome.com/">fontawesome.com</a>
       </p>
     </div>
   </section>
