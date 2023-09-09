@@ -187,9 +187,8 @@ require __DIR__ . '/vendor/autoload.php';
 use Orhanerday\OpenAi\OpenAi;
 
 $open_ai_key = getenv('OPENAI_API_KEY'); //777
-$open_ai_key = "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";
+$open_ai_key = "#######################";
 
-// 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
 $open_ai = new OpenAi($open_ai_key);
 
 if (isset($_POST["gpt_upload"]) && is_user_logged_in()) {

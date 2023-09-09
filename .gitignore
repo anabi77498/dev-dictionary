@@ -22,3 +22,6 @@ composer.phar
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+#IGNORE GPT API-KEY
+api-keys.txt
