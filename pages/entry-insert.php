@@ -171,7 +171,88 @@ if (isset($_POST["upload"]) && is_user_logged_in()) {
 
     $confirmation = True;
   }
+
+  $ai_response_values = array(
+    'name' => '',
+    'definition' => '',
+    'example' => '',
+    'description' => '',
+  );
 }
+
+////////////////// chat-gpt 3.5 form implementation
+
+require __DIR__ . '/vendor/autoload.php';
+
+use Orhanerday\OpenAi\OpenAi;
+
+$open_ai_key = getenv('OPENAI_API_KEY'); //777
+$open_ai_key = "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";
+
+// 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
+$open_ai = new OpenAi($open_ai_key);
+
+if (isset($_POST["gpt_upload"]) && is_user_logged_in()) {
+  $gpt_name_value = $_POST["prompt"];
+
+  $gpt_definition = $open_ai->chat([
+    'model' => 'gpt-3.5-turbo',
+    'messages' => [
+      [
+          "role" => "user",
+          "content" => "Give me a simple, easy to understand definition of " . $gpt_name_value . " in 1 sentence"
+      ]
+  ],
+    'temperature' => 1.0,
+    'max_tokens' => 4000,
+    'frequency_penalty' => 0,
+    'presence_penalty' => 0,
+  ]);
+
+  $gpt_example = $open_ai->chat([
+    'model' => 'gpt-3.5-turbo',
+    'messages' => [
+      [
+        "role" => "user",
+        "content" => "Give me a simple, easy to understand coding example of " . $gpt_name_value . ". Please type ONLY the code, nothing else"
+      ]
+  ],
+    'temperature' => 1.0,
+    'max_tokens' => 4000,
+    'frequency_penalty' => 0,
+    'presence_penalty' => 0,
+  ]);
+
+  $gpt_description = $open_ai->chat([
+    'model' => 'gpt-3.5-turbo',
+    'messages' => [
+      [
+        "role" => "user",
+        "content" => "Give me a simple, easy to understand description of " . $gpt_name_value . " in 180 words"
+      ],
+  ],
+    'temperature' => 1.0,
+    'max_tokens' => 4000,
+    'frequency_penalty' => 0,
+    'presence_penalty' => 0,
+  ]);
+
+  $gpt_response_definition = json_decode($gpt_definition, true);
+  $gpt_response_example = json_decode($gpt_example, true);
+  $gpt_response_description = json_decode($gpt_description, true);
+
+  $gpt_definition_value = $gpt_response_definition["choices"][0]["message"]["content"];
+  $gpt_example_value = $gpt_response_example["choices"][0]["message"]["content"];
+  $gpt_description_value = $gpt_response_description["choices"][0]["message"]["content"];
+
+
+  $ai_response_values['name'] = $gpt_name_value;
+  $ai_response_values['definition'] = $gpt_definition_value;
+  $ai_response_values["example"] = $gpt_example_value;
+  $ai_response_values["description"] = $gpt_description_value;
+
+}
+//////////////////
 
 ?>
 
@@ -186,6 +267,7 @@ if (isset($_POST["upload"]) && is_user_logged_in()) {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
   <!-- Citation: Styling via Bootstrap https://getbootstrap.com -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   <!-- Citation: Icons imported from FontAwesome https://fontawesome.com -->
   <script src="https://kit.fontawesome.com/f71311d29e.js" crossorigin="anonymous"></script>
   <link rel="icon" href="../public/images/logo.png" type="image/icon type">
@@ -204,6 +286,33 @@ if (isset($_POST["upload"]) && is_user_logged_in()) {
 
 
       <section>
+
+      <div class="dictionary-gpt-ai">
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          Answer with DictionaryAI 🪄🔮
+        </button>
+
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+            <form class="gpt-insert-form" action="/entry-insert" method="post">
+              <div class="header">
+                <h4>Powered by Chat-GPT 3.5</h4>
+                <img src="../public/images/gpt-logo.svg">
+              </div>
+                <p>Get AI to fill in the definition, example and description field of your submission!</p>
+                <div>
+                  <label for="tech-name-gpt" class="head-label">Technology Name: </label>
+                  <input id="tech-name-gpt" class="text form-control" type="text" name="prompt" placeholder="TensorFlow" />
+                </div>
+
+                <div class="submit">
+                  <button class="btn btn-outline-primary btn-style" type="submit" name="gpt_upload">generate</button>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+
         <form class="insert-form" action="/entry-insert" method="post" enctype="multipart/form-data">
 
           <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_FILE_SIZE; ?>">
@@ -218,38 +327,39 @@ if (isset($_POST["upload"]) && is_user_logged_in()) {
 
           <div class="input-group-1">
             <label for="tech-name" class="head-label">Technology Name: </label>
-            <input id='tech-name' class="text form-control" type="text" name="tech_name">
+            <input id='tech-name' class="text form-control" type="text" name="tech_name"
+              value="<?php echo $ai_response_values['name']?>">
           </div>
 
           <div class="text-area input-group-1">
             <label for="tech-definition" class="head-label">
               Technology Definition: </label>
-            <textarea id='tech-definition' class="form-control" rows="3" cols="60" name="tech_definition"></textarea>
+            <textarea id='tech-definition' class="form-control" rows="3" cols="60" name="tech_definition"><?php echo $ai_response_values['definition']?></textarea>
           </div>
 
           <div class="text-area input-group-1">
             <label for="tech-example" class="head-label">
               Technology Example: </label>
-            <textarea id='tech-example' class="form-control" rows="3" cols="60" name="tech_example"></textarea>
+            <textarea id='tech-example' class="form-control" rows="3" cols="60" name="tech_example"><?php echo $ai_response_values['example']?></textarea>
             <small id="tech-example-help" class="form-text text-muted">*Format as coherent code, including tabs, new-lines, etc</small>
           </div>
 
           <div class="text-area input-group-1">
             <label for="tech-description" class="head-label">
               Technology Description: </label>
-            <textarea id='tech-description' class="form-control" rows="10" cols="60" name="tech_description"></textarea>
+            <textarea id='tech-description' class="form-control" rows="10" cols="60" name="tech_description"><?php echo $ai_response_values['description']?></textarea>
             <small id="tech-description-help" class="form-text text-muted">*Minimum 150 words</small>
           </div>
 
           <div class="input-group-1">
             <label for="tech-resource" class="head-label">
-              Additional Resource: </label>
+              Additional Resource Title: </label>
             <input id='tech-resource' class="text form-control" type="text" name="tech_resource">
           </div>
 
           <div class="input-group-1">
             <label for="tech-resource-url" class="head-label">Resource URL:</label>
-            <input id='tech-resource-url' class="text form-control" type="url" name="tech_resource_url" placeholder="https://www.w3schools.com">
+            <input id='tech-resource-url' class="text form-control" type="url" name="tech_resource_url">
           </div>
 
           <div class="input-group-1 media-upload">
@@ -259,7 +369,7 @@ if (isset($_POST["upload"]) && is_user_logged_in()) {
           </div>
 
           <div class="input-group-1">
-            <label for="file-source" class="head-label">Source URL:</label>
+            <label for="file-source" class="head-label">Image Source URL:</label>
             <input id='file-source' class="text form-control" type="url" name="file_source" placeholder="URL">
             <small id="tech-file-source-help" class="form-text text-muted">*Optional</small>
           </div>
@@ -334,7 +444,7 @@ if (isset($_POST["upload"]) && is_user_logged_in()) {
           </div>
 
           <div class="submit-btn">
-            <button type="submit" name="upload">Upload</button>
+            <button class="btn btn-outline-primary btn-style" type="submit" name="upload">Upload</button>
           </div>
         </form>
       </section>

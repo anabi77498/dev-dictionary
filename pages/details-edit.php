@@ -287,10 +287,10 @@ if (isset($_POST['make-vote'])) {
 
           </div>
           <div class="btn-submit">
-            <button type="submit" name="make-edit">Edit</button>
+            <button class="btn btn-outline-warning btn-edit" type="submit" name="make-edit">Edit</button>
           </div>
         </form>
-        <a href="<?php echo $prev_url ?>"><button class="return-btn-tags">Return</button></a>
+        <a href="<?php echo $prev_url ?>"><button class="return-btn-tags btn btn-outline-primary btn-style">Return</button></a>
       <?php } ?>
 
       <?php if ($to_edit == "techs.definition") { ?>
@@ -310,10 +310,10 @@ if (isset($_POST['make-vote'])) {
           </div>
 
           <div class="btn-submit">
-            <button type="submit" name="make-edit">Edit</button>
+            <button class="btn btn-outline-warning btn-edit" type="submit" name="make-edit">Edit</button>
           </div>
         </form>
-        <a href="<?php echo $prev_url ?>"><button class="return-btn-tags">Return</button></a>
+        <a href="<?php echo $prev_url ?>"><button class="return-btn-tags btn btn-primary">Return</button></a>
       <?php } ?>
 
       <?php if ($to_edit == "techs.example") { ?>
@@ -333,10 +333,10 @@ if (isset($_POST['make-vote'])) {
           </div>
 
           <div class="btn-submit">
-            <button type="submit" name="make-edit">Edit</button>
+            <button class="btn btn-outline-warning btn-edit" type="submit" name="make-edit">Edit</button>
           </div>
         </form>
-        <a href="<?php echo $prev_url ?>"><button class="return-btn-tags">Return</button></a>
+        <a href="<?php echo $prev_url ?>"><button class="return-btn-tags btn btn-primary">Return</button></a>
       <?php } ?>
 
       <?php if ($to_edit == "techs.description") { ?>
@@ -356,10 +356,10 @@ if (isset($_POST['make-vote'])) {
           </div>
 
           <div class="btn-submit">
-            <button type="submit" name="make-edit">Edit</button>
+            <button class="btn btn-outline-warning btn-edit" type="submit" name="make-edit">Edit</button>
           </div>
         </form>
-        <a href="<?php echo $prev_url ?>"><button class="return-btn-tags">Return</button></a>
+        <a href="<?php echo $prev_url ?>"><button class="return-btn-tags btn btn-primary">Return</button></a>
       <?php } ?>
 
       <?php if ($to_edit == "techs.resource_name" && $to_edit2 == "techs.resource_url") { ?>
@@ -390,11 +390,11 @@ if (isset($_POST['make-vote'])) {
           </div>
 
           <div class="btn-submit">
-            <button type="submit" name="make-edit">Edit</button>
+            <button class="btn btn-outline-warning btn-edit" type="submit" name="make-edit">Edit</button>
           </div>
 
         </form>
-        <a href="<?php echo $prev_url ?>"><button class="return-btn-tags">Return</button></a>
+        <a href="<?php echo $prev_url ?>"><button class="return-btn-tags btn btn-primary">Return</button></a>
       <?php } ?>
 
     <?php } else if ($is_tag == NULL && $is_vote != NULL) { ?>
@@ -439,7 +439,7 @@ if (isset($_POST['make-vote'])) {
             </div>
           </div>
           </div>
-          <button type="submit" name="make-vote">Vote</button>
+          <button class="btn btn-primary" type="submit" name="make-vote">Vote</button>
         </form>
       <?php } ?>
     <?php } else { ?>
@@ -466,7 +466,7 @@ if (isset($_POST['make-vote'])) {
 
               <input type="hidden" name="tech_id" value="<?php echo $get_id; ?>">
               <div class="filter-submit-btn">
-                <button type="submit" name="add-tag">Add Tag</button>
+                <button class="btn btn-primary" type="submit" name="add-tag">Add Tag</button>
               </div>
             </form>
           </div>
@@ -485,14 +485,14 @@ if (isset($_POST['make-vote'])) {
                   <!-- hidden input for tech_tag id -->
                   <input type="hidden" name="record" value="<?php echo htmlspecialchars($tag_record['tech_tag.id']) ?>">
 
-                  <button type="submit" name="delete-tag" class="tag-x">❌</button>
+                  <button type="submit" name="delete-tag" class="tag-x">&#x2717;</button>
                 </form>
               </div>
             <?php } ?>
           </div>
         </div>
       </div>
-      <a href="<?php echo $prev_url ?>"><button class="return-btn-tags">Return</button></a>
+      <a href="<?php echo $prev_url ?>"><button class="return-btn-tags btn btn-primary">Return</button></a>
 
     <?php } ?>
 

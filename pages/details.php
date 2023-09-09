@@ -154,7 +154,7 @@ if (isset($_GET['delete_entry']) && is_user_logged_in()) {
             <!-- hidden input for record -->
             <input type="hidden" name="record" value="<?php echo htmlspecialchars($record['tech.id']) ?>">
 
-            <button class=" edit-btn tag-edit btn" type="submit" aria-label="edit <?php echo htmlspecialchars($record['tech.name']) ?> name">
+            <button class="edit-btn tag-edit" type="submit" aria-label="edit <?php echo htmlspecialchars($record['tech.name']) ?> name">
               <i style="font-size:22px" class="fa" id="edit-btn-id">&#xf044;</i>
             </button>
           </form>
@@ -162,11 +162,11 @@ if (isset($_GET['delete_entry']) && is_user_logged_in()) {
       </div>
       <?php if (is_user_logged_in() && !$show_edits) { ?>
         <a href="/details?<?php echo http_build_query(array('record' => $record['tech.id'], 'edits_on' => '1')) ?>">
-          <button id="edit-mode" class="btn btn-primary btn-edit">Edit Mode</button>
+          <button id="edit-mode" class="btn btn-primary btn-edit">Edit Mode ✏️</button>
         </a>
       <?php } else if (is_user_logged_in()) { ?>
         <a href="/details?<?php echo http_build_query(array('record' => $record['tech.id'], 'edits_on' => '0')) ?>">
-          <button id="edit-mode" class="btn btn-primary btn-view">View Mode</button>
+          <button id="edit-mode" class="btn btn-primary btn-view">View Mode 👓</button>
         </a>
       <?php } ?>
     </div>
@@ -396,7 +396,7 @@ if (isset($_GET['delete_entry']) && is_user_logged_in()) {
           <!-- hidden input for review -->
           <input type="hidden" name="delete_review_record" value="<?php echo htmlspecialchars($record['review.id']) ?>">
 
-          <button class="delete-btn definition-edit edit-btn" type="submit" name="delete_entry"><span>Delete Technology</span></button>
+          <button class="delete-btn definition-edit edit-btn btn btn-danger" type="submit" name="delete_entry"><span>Delete Technology</span></button>
 
         </form>
     </div>

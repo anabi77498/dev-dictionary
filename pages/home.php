@@ -100,7 +100,7 @@ foreach ($tags as $tag) {
     <?php } else { ?>
       <p>You are not currently logged in. If you wish to sign up and request moderation features, please email <em>an448@cornell.edu</em></p>
       <div class="alert alert-primary alert-log-in-home" role="alert">
-        We are currently in an open-source test stage, you may use the example login
+        <span>We are currently in an open-source test stage, you may use the example login</span>
         <ul class="example login">
           <li><span>Username:</span> test123</li>
           <li><span>Password:</span> monkey</li>
@@ -109,7 +109,7 @@ foreach ($tags as $tag) {
     <?php } ?>
 
     <div class="home-body">
-      <h2>Technologies</h2>
+      <h1 class="display-6">Technologies</h1>
       <section class="catalog-sect">
         <div class="catalog-queries">
           <aside>

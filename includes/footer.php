@@ -9,7 +9,7 @@
       </a>
 
       <a href="https://github.coecis.cornell.edu/an448" class="a-icon-style me-4 text-reset">
-        <i class="fab fa-github"></i>
+        <i class="fab fa-github github-cornell"></i>
       </a>
 
       <a href="https://www.linkedin.com/in/asadnabi7/" class=" a-icon-style me-4 text-reset">
