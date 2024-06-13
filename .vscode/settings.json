@@ -27,7 +27,6 @@
     },
     "webvalidator.showPopup": false,
     "webvalidator.validateOnSave": true,
-    "workbench.activityBar.visible": true,
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.editor.wrapTabs": true,
     "[css]": {
